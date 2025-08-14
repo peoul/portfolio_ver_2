@@ -1,0 +1,28 @@
+{
+    "hero" : {
+        "name" : "Lyhong Peou",
+        "title": "FrondEnd Developer",
+        "tagline": "Turning coffee into code and ideas into reality."
+
+    },
+    "about": {
+        "title": "About Me",
+        "content": " Brief",
+        "skills": []
+    },
+    "projects": [
+        {
+            "id": 1,
+            "title": "",
+            "description": "",
+            "image": "",
+            "tech_stack": "",
+            "github": ""
+        }
+    ],
+    "contact": {
+        "email": "lyhongpeou.lp@gmail.com",
+        "linkedin": "https://www.linkedin.com/in/lyhong-peou/",
+        "github": "https://github.com/peoul"
+    }
+}

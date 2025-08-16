@@ -4,7 +4,7 @@ import ModeIcon from "./assets/image/mode.svg?react";
 import HeroSection from "./component/Hero";
 import Terminal from "./component/Terminal";
 import RecentProject from "./component/Recent";
-
+import ContactSection from "./component/Contact";
 
 function App() {
   const [light, setLight] = useState(true);
@@ -21,7 +21,7 @@ function App() {
   }, [light]);
 
   return (
-    <div className="container">
+    <>
       <div className="navbar">
         <button
           className="mode_btn"
@@ -31,17 +31,16 @@ function App() {
           <ModeIcon />
         </button>
       </div>
+      <div className="container">
+        <HeroSection />
 
-      <HeroSection/>
+        <Terminal />
 
-      <Terminal/>
+        <RecentProject />
 
-      <RecentProject/>
-
-
-
-      <div></div>
-    </div>
+        <ContactSection/>
+      </div>
+    </>
   );
 }
 

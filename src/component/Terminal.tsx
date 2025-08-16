@@ -1,8 +1,8 @@
 import "./terminal.css";
-
+import { contact } from "../assets/data/portfolio.json";
 function Terminal() {
   return (
-    <>
+
       <div className="terminal">
         <div className="header">
           <p>Terminal — About Me</p>
@@ -36,12 +36,12 @@ function Terminal() {
           <div className="input-statement">
             <p>lyhong@local ~</p>
             <p className="input">$ cat contact.txt</p>
-            <a className="output" href="mailto:lyhong.peou@gmail.com">
+            <a className="output" href={`mailto:${contact.email}`}>
               📧 gmail.com
             </a>
             <a
               className="output"
-              href="https://linkedin.com/in/lyhong-peou"
+              href={contact.linkedin}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -49,7 +49,7 @@ function Terminal() {
             </a>
             <a
               className="output"
-              href="https://github.com/lyhong-peou"
+              href={contact.github}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -65,7 +65,6 @@ function Terminal() {
           </div>
         </div>
       </div>
-    </>
   );
 }
 

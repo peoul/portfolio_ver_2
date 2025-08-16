@@ -36,12 +36,11 @@
   padding: 2.5rem;
   border-top: 1px solid var(--border-muted);
   color: var(--text-muted);
-
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
   font-size: 1.2rem;
-
+  width: 100%;
   height: min-content;
 }
 
@@ -62,6 +61,11 @@
   color: var(--text-muted);
   letter-spacing: 0.5px;
   text-wrap: wrap;
+}
+
+.output a {
+  text-decoration: none;
+  color: var(--text)
 }
 
 .output-folder {

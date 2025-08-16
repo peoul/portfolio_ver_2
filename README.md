@@ -2,6 +2,8 @@
 
 A modern, terminal-inspired portfolio website showcasing my projects and skills as a developer. Built with React, TypeScript, and featuring a sleek dark/light mode toggle.
 
+![Demo](./public/image.png )
+
 ## ✨ Features
 
 - **Terminal-Inspired Design**: Interactive command-line interface showcasing personal information

@@ -14,7 +14,7 @@ A modern, terminal-inspired portfolio website showcasing my projects and skills 
 
 ## 🚀 Live Demo
 
-Visit the live portfolio: [Your Portfolio URL]
+Visit the live portfolio: [me.lyhong.dev](https://me.lyhong.dev)
 
 ## 🛠️ Tech Stack
 

@@ -70,7 +70,7 @@ function Card({ title, description, tags, github }: ProjectProps) {
     <>
       <div className="file" onClick={openHandler}>
         <File />
-        <p>{title}.md</p>
+        <p>{title}</p>
       </div>
 
       {open && (

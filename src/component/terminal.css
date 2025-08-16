@@ -1,0 +1,103 @@
+.terminal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem;
+  background-color: var(--bg);
+  border-radius: 1rem;
+  border: 2px solid var(--border);
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: min-content;
+  width: 100%;
+  background-color: var(--bg-light);
+  border-top-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.header-action {
+  display: flex;
+  gap: 1rem;
+}
+
+.command {
+  min-height: min-content;
+  width: 100%;
+  padding: 2.5rem;
+  border-top: 1px solid var(--border-muted);
+  color: var(--text-muted);
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  font-size: 1.2rem;
+
+  height: min-content;
+}
+
+.input-statement {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.input {
+  color: var(--text);
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  text-wrap: wrap;
+}
+
+.output {
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  text-wrap: wrap;
+}
+
+.output-folder {
+  color: var(--secondary);
+  font-weight: 700;
+}
+
+a {
+  text-decoration: none;
+}
+
+.cursor {
+  animation: blink 1s infinite;
+  color: var(--text);
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .terminal {
+    margin: 7rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    width: 70%;
+  }
+
+  .command {
+    font-size: 1rem;
+  }
+}

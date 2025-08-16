@@ -1,0 +1,12 @@
+.recent_work {
+  margin: 2rem;
+  display:flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .recent_work {
+    margin: 7rem;
+    margin-top: 1rem;
+  }
+}

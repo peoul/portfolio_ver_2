@@ -42,25 +42,23 @@ body {
   gap: 3rem;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
-  flex-wrap: wrap-reverse;
-  padding: 2rem;
-  min-height: 60vh; /* Ensures minimum space */
-
-  max-width: 3400px;
+  justify-content: start;
+  margin: 1.5rem;
+  margin-bottom: 0rem;
 }
 
 .hero_left {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .hero_left p {
   color: var(--text-muted);
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 300;
+  white-space: pre-line; /* Preserves \n as line breaks */
 }
 
 .hero_left h1 {
@@ -70,28 +68,50 @@ body {
 }
 
 .hero_left h2 {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 500;
   line-height: 1.15;
   color: var(--text);
 }
 
-.hero_right {
+.hero_link {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: row;
+  gap: 1rem;
+  padding: 0.5rem;
+  padding-left: 0;
 }
 
-.hero_right svg {
-  width: 12rem;
-  height: 12rem;
-  border-radius: 10rem;
+.hero_link svg {
+  width: 2rem;
+  height: 2rem;
+  fill: var(--text-muted) !important;
 }
 
 @media (min-width: 768px) {
-  .hero_right svg {
-    width: 25rem; /* Instead of 30rem */
-    height: 25rem;
-    border-radius: 5rem;
+  .hero_link svg {
+    width: 2rem; /* Instead of 30rem */
+    height: 2rem;
   }
+
+  .hero {
+    padding: 0.5rem;
+    margin: 7rem;
+    margin-bottom: 0rem;
+  }
+
+  .hero_left p {
+  font-size: 1.5rem;
+}
+
+.hero_left h1 {
+  font-size: 4rem;
+
+}
+
+.hero_left h2 {
+  font-size: 2rem;
+  color: var(--text);
+}
+
 }

@@ -1,72 +1,40 @@
 {
   "hero": {
     "name": "Lyhong Peou",
-    "title": "Frondend Developer",
-    "tagline": "Turning coffee into code and ideas into reality."
+    "title": "Developer",
+    "tagline": "Coffee → Code. Ideas → Reality.\nThis is my new beginning.\nHello World! 👋"
   },
-  "about": {
-    "title": "About Me",
-    "content": "Hey there! I'm a frontend developer with a Computer Science background from Oregon State (3.93 GPA, not to brag 😉) and currently pursuing my Master's at Johns Hopkins with a perfect 4.0. I've been working as an IT Technician for 3+ years, helping students and faculty while mentoring new team members. I love building user-friendly applications and solving problems - whether it's debugging React components or helping someone troubleshoot their computer. When I'm not coding, I'm probably working on side projects or optimizing my daily habits (hence the streak tracker).",
-    "skills": ["Frontend Development", "Backend Development", "Homelab & Self-Hosting" ]
-  },
-  "projects": {
-    "personal": [
-      {
-        "title": "Slow Typer",
-        "description": "A minimalist typing speed test application built with React and TypeScript. Features real-time feedback, performance metrics, and a clean, distraction-free interface for improving typing skills.",
-        "technologies": ["React 19", "TypeScript", "Vite", "CSS3", "ESLint"],
-        "features": [
-          "Real-time typing feedback with visual indicators",
-          "Performance metrics (WPM, accuracy, mistakes)",
-          "Random text generation from curated collection",
-          "Responsive design with smooth animations",
-          "Timer with precise tracking from first keystroke"
-        ],
-        "github": "https://github.com/peoul/slow-typer"
-      },
-      {
-        "title": "Streak - Habit Tracker",
-        "description": "A GitHub-style contribution tracker for personal habits. Build consistency one commit at a time with visual progress tracking and streak building.",
-        "technologies": ["React", "TypeScript", "CSS3", "Local Storage"],
-        "features": [
-          "Single habit focus to prevent overwhelm",
-          "GitHub-style contribution graph visualization",
-          "Daily commit system with timestamps",
-          "Visual progress tracking with green squares",
-          "Streak building and momentum tracking"
-        ],
-        "github": "https://github.com/peoul/streak"
-      }
-    ],
-    "school": [
-      {
-        "title": "Clue-Less Game",
-        "description": "A simplified multiplayer version of the classic board game Clue, implemented as a web-based application with real-time gameplay and interactive features.",
-        "technologies": [
-          "Python",
-          "Flask",
-          "Flask-SocketIO",
-          "SQLAlchemy",
-          "SQLite",
-          "HTML",
-          "CSS",
-          "JavaScript"
-        ],
-        "features": [
-          "Multiplayer lobby system with real-time updates",
-          "Character selection and game setup",
-          "Interactive game board with rooms and secret passages",
-          "Turn-based gameplay with move, suggest, and accuse actions",
-          "Card distribution and mystery-solving mechanics",
-          "Real-time game state synchronization"
-        ],
-        "github": "https://github.com/peoul/clue-less",
-        "course": "EN.605.601.85.SP25 Foundations of Software",
-        "institution": "Johns Hopkins University",
-        "role": "Lead Configuration Management"
-      }
-    ]
-  },
+  "projects": [
+    {
+      "title": "Slow Typer",
+      "description": "A minimalist typing speed test application built with React and TypeScript. Features real-time feedback, performance metrics, and a clean, distraction-free interface for improving typing skills.",
+      "tags": ["React 19", "TypeScript", "Vite", "CSS3", "ESLint"],
+      "github": "https://github.com/peoul/slow-typer"
+    },
+    {
+      "title": "Streak - Habit Tracker",
+      "description": "A GitHub-style contribution tracker for personal habits. Build consistency one commit at a time with visual progress tracking and streak building.",
+      "tags": ["React", "TypeScript", "CSS3", "Local Storage"],
+      "github": "https://github.com/peoul/streak"
+    },
+
+    {
+      "title": "Clue-Less Game",
+      "description": "A simplified multiplayer version of the classic board game Clue, implemented as a web-based application with real-time gameplay and interactive features.",
+      "tags": [
+        "Python",
+        "School",
+        "Flask",
+        "Flask-SocketIO",
+        "SQLAlchemy",
+        "SQLite",
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "github": "https://github.com/peoul/clue-less"
+    }
+  ],
   "contact": {
     "email": "lyhongpeou.lp@gmail.com",
     "linkedin": "https://www.linkedin.com/in/lyhong-peou/",

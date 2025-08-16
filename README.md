@@ -1,69 +1,163 @@
-# React + TypeScript + Vite
+# Lyhong Peou - Developer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, terminal-inspired portfolio website showcasing my projects and skills as a developer. Built with React, TypeScript, and featuring a sleek dark/light mode toggle.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Terminal-Inspired Design**: Interactive command-line interface showcasing personal information
+- **Dark/Light Mode**: Seamless theme switching with smooth transitions
+- **Project Showcase**: Modal-based project browser with detailed descriptions
+- **Responsive Design**: Optimized for both desktop and mobile devices
+- **Modern Tech Stack**: Built with React 18, TypeScript, and Vite
 
-## Expanding the ESLint configuration
+## 🚀 Live Demo
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Visit the live portfolio: [Your Portfolio URL]
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- **Frontend**: React 18, TypeScript
+- **Build Tool**: Vite
+- **Styling**: CSS3 with CSS Variables for theming
+- **Icons**: Custom SVG icons and React SVG components
+- **Design**: Mobile-first responsive design
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 📁 Project Structure
+
+```
+src/
+├── assets/
+│   ├── data/
+│   │   └── portfolio.json      # Portfolio data (projects, contact info)
+│   └── image/                  # SVG icons
+├── component/
+│   ├── Contact.tsx             # Contact section component
+│   ├── Hero.tsx                # Hero/intro section
+│   ├── Recent.tsx              # Projects showcase with modals
+│   ├── Terminal.tsx            # Terminal-style about section
+│   └── *.css                   # Component styles
+├── App.tsx                     # Main app component
+├── App.css                     # Global app styles
+├── index.css                   # CSS variables and theming
+└── main.tsx                    # App entry point
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🎨 Design Features
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Terminal Interface
+- Interactive command-line style presentation
+- Animated cursor with blinking effect
+- Realistic terminal commands showcasing:
+  - Current directory (`pwd`)
+  - Resume download link
+  - Programming languages
+  - Contact information
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Project Browser
+- File explorer-inspired project display
+- Modal popups with detailed project information
+- GitHub integration for source code links
+- Technology tags for each project
+
+### Theming System
+- CSS custom properties for consistent theming
+- OKLCH color space for better color consistency
+- Smooth transitions between themes
+- High contrast ratios for accessibility
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (v16 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/peoul/portfolio.git
+cd portfolio
 ```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm run dev
+```
+
+4. Open your browser and visit `http://localhost:5173`
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+The built files will be in the `dist/` directory.
+
+## 📝 Customization
+
+### Personal Information
+Edit `src/assets/data/portfolio.json` to update:
+- Personal details (name, title, tagline)
+- Project information
+- Contact details
+
+### Styling
+- Global theme variables: `src/index.css`
+- Component-specific styles: Individual CSS files in `src/component/`
+
+### Adding Projects
+Add new projects to the `projects` array in `portfolio.json`:
+
+```json
+{
+  "title": "Project Name",
+  "description": "Project description with features",
+  "tags": ["React", "TypeScript", "CSS"],
+  "github": "https://github.com/username/repo"
+}
+```
+
+## 🎯 Current Projects Featured
+
+- **Slow Typer**: Minimalist typing speed test with real-time WPM tracking
+- **Streak**: GitHub-style habit tracker with contribution graphs  
+- **Clue-Less**: Multiplayer web version of the classic Clue board game
+
+## 📱 Responsive Design
+
+The portfolio is fully responsive with breakpoints at:
+- Mobile: < 768px
+- Desktop: ≥ 768px
+
+Features adaptive layouts, font sizes, and spacing for optimal viewing on all devices.
+
+## 🌟 Performance Features
+
+- Vite for fast development and optimized builds
+- Efficient component architecture
+- Optimized SVG icons
+- CSS custom properties for minimal runtime calculations
+
+## 📧 Contact
+
+- **Email**: lyhongpeou.lp@gmail.com
+- **LinkedIn**: [linkedin.com/in/lyhong-peou](https://www.linkedin.com/in/lyhong-peou/)
+- **GitHub**: [github.com/peoul](https://github.com/peoul)
+
+## 🙏 Acknowledgments
+
+Inspired by [Justin Chi](https://www.justinchi.me) - Thanks for the design inspiration!
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+---
+
+⭐ If you found this portfolio interesting, please consider giving it a star on GitHub!

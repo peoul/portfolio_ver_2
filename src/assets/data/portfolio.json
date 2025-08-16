@@ -21,7 +21,7 @@
       "title": "Clue-Less",
       "description": "Implemented a multiplayer web version of the classic Clue board game with real-time gameplay.\n\n• Lobby system with character selection\n• Turn-based mechanics and game state sync\n• Real-time multiplayer functionality\n\nTeam project for Foundations of Software at Johns Hopkins University.\nCollaborated with Amanda Lowery (PM), Linda Nguyen (Lead Dev), and Deon Odom (QA).",
       "tags": ["Python", "Flask", "JavaScript", "School"],
-      "github": "https://github.com/peoul/clue-less"
+      "github": "https://github.com/lamlinda/Clue-less"
     }
   ],
   "contact": {

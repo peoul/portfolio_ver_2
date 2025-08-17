@@ -37,7 +37,10 @@ function Terminal() {
         <div className="input-statement">
           <p>lyhong@local ~</p>
           <p className="input">$ resume</p>
-          <a href="/resume.pdf" className="output">
+          <a
+            href="https://drive.google.com/file/d/1mkDotOf5i4xw-phPVCQcBv1ROFjfnfSK/view?usp=sharing"
+            className="output"
+          >
             📄 View PDF
           </a>
         </div>

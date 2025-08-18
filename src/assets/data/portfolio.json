@@ -6,6 +6,12 @@
   },
   "projects": [
     {
+      "title": "Portfolio",
+      "description": "Built a responsive personal portfolio website with a terminal-inspired design and smooth user experience.\n\n• Dark/light mode toggle with custom CSS variables\n• Terminal-style interface with typing animations\n• Modal-based project showcase with mobile optimization\n• Responsive design from mobile-first to desktop",
+      "tags": ["React", "TypeScript", "CSS", "Personal"],
+      "github": "https://github.com/peoul/portfolio_ver_2"
+    },
+    {
       "title": "Slow Typer",
       "description": "Built a minimalist typing speed test with real-time WPM tracking and visual feedback.\n\n• Performance analytics dashboard\n• Responsive design for distraction-free practice\n• Real-time accuracy measurement",
       "tags": ["React", "TypeScript", "CSS", "Personal"],

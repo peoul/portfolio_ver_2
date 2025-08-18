@@ -21,7 +21,7 @@ function Modal({
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-terminal" onClick={(e) => e.stopPropagation()}>
-        <div className="header">
+        <div className="header-modal">
           <p>{title}</p>
           <div className="header-action">
             <p className="close_btn" onClick={onClose}>

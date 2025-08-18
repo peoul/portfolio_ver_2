@@ -62,13 +62,14 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  padding: 1rem;
 }
 
 .modal-terminal {
   display: flex;
   flex-direction: column;
   align-items: start;
-  justify-content: center;
+  justify-content: flex-start;
   margin: 0; 
   background-color: var(--bg);
   border-radius: 1rem;
@@ -76,8 +77,58 @@
   max-width: 600px;
   width: 90%;
   max-height: 70vh;
-  overflow-y: auto;
+  overflow: hidden;
   position: relative; 
+}
+
+/* Fixed header that stays visible when scrolling */
+.header-modal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-muted);
+  background-color: var(--bg);
+  border-radius: 1rem 1rem 0 0;
+  flex-shrink: 0;
+  min-height: 60px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  background-color: var(--bg-light);
+}
+
+.header-modal p {
+  margin: 0;
+  font-weight: 600;
+  color: var(--text);
+  font-size: 1.1rem;
+  flex: 1;
+  padding-right: 1rem;
+  
+}
+
+.header-action {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.close_btn {
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s ease;
+  min-width: 30px;
+  text-align: center;
+}
+
+.close_btn:hover {
+  background-color: var(--bg-light);
 }
 
 .modal-content-body {
@@ -86,6 +137,9 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  overflow-y: auto;
+  flex: 1;
+  height: 0; /* This forces the flex container to work properly */
 }
 
 .tags {
@@ -116,14 +170,42 @@
 }
 
 .content-body-right p{
-    white-space: pre-line; /* This will respect \n line breaks */
+  white-space: pre-line;
   line-height: 1.6;
+  margin: 0;
 }
 
+/* Mobile-specific adjustments */
+@media (max-width: 767px) {
+  .modal-overlay {
+    padding: 0.5rem;
+  }
 
+  .modal-terminal {
+    max-height: calc(100vh - 1rem);
+  }
 
-.close_btn {
-  cursor: pointer;
+  .heaheader-modal {
+    padding: 0.75rem 1rem;
+    min-height: 50px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .header-modal p {
+    font-size: 1rem;
+    padding-right: 0.5rem;
+  }
+
+  .modal-content-body {
+    padding: 1.5rem 1rem;
+  }
+
+  .close_btn {
+    font-size: 1.25rem;
+    min-width: 25px;
+  }
 }
 
 @media (min-width: 768px) {

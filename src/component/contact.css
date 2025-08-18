@@ -23,12 +23,12 @@
 .contact {
   display: flex;
   gap: 2rem;
-  align-items: start;
+  align-items: center;
   justify-content: start;
   flex-wrap: wrap;
   padding: 2rem;
   padding-left: 0;
-  font-size: 23px;
+  font-size: 1rem;
 }
 
 .separator {

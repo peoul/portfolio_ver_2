@@ -6,6 +6,12 @@
   },
   "projects": [
     {
+      "title": "Bamboo",
+      "description": "Building a modern note-taking application with elegant design and flexible functionality.\n\n• Full-stack development with React/TypeScript frontend and Node.js/Express backend\n• JWT authentication and PostgreSQL database integration\n• Rich text editor with folder organization system\n• Dark/light theme switching with custom CSS variables\n• Responsive design with mobile-first approach\n\nCurrently in active development with plans for PDF/Markdown export and cross-device synchronization.",
+      "tags": ["React", "TypeScript", "Node.js", "PostgreSQL", "Express", "Personal"],
+      "github": "https://github.com/peoul/bamboo"
+    },
+    {
       "title": "Portfolio",
       "description": "Built a responsive personal portfolio website with a terminal-inspired design and smooth user experience.\n\n• Dark/light mode toggle with custom CSS variables\n• Terminal-style interface with typing animations\n• Modal-based project showcase with mobile optimization\n• Responsive design from mobile-first to desktop",
       "tags": ["React", "TypeScript", "CSS", "Personal"],

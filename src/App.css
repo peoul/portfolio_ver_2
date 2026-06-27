@@ -1,7 +1,7 @@
 .navbar {
   max-width: 44rem;
   margin: 0 auto;
-  padding: 1.75rem 1.5rem 0;
+  padding: 1.5rem 1.25rem 0;
   display: flex;
   justify-content: flex-end;
 }
@@ -10,14 +10,15 @@
   background: transparent;
   border: 1px solid var(--border-muted);
   border-radius: 0.5rem;
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 2.5rem;
+  height: 2.5rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   color: var(--text-muted);
   transition: border-color 0.2s ease, color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .mode_btn:hover {
@@ -34,10 +35,10 @@
 .container {
   max-width: 44rem;
   margin: 0 auto;
-  padding: 3rem 1.5rem 5rem;
+  padding: 2.25rem 1.25rem 4rem;
   display: flex;
   flex-direction: column;
-  gap: 5rem;
+  gap: 3.5rem;
 }
 
 /* ---- Hero / whoami ---- */
@@ -66,7 +67,7 @@
 @media (min-width: 768px) {
   .container {
     gap: 6rem;
-    padding-top: 4rem;
+    padding: 4rem 1.5rem 5rem;
   }
 
   .hero .tagline {

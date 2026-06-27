@@ -1,74 +1,61 @@
 .contact_section {
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  text-align: start;
-  margin: 2rem;
-  flex-wrap: wrap;
-}
-
-.contact_section a {
-  text-decoration: none;
-  color: var(--text-muted);
-}
-
-.attribution {
-  color: var(--text);
-  font-size: 0.8rem; /* Mobile size */
-  text-align: start;
-  word-break: break-word;
-  line-height: 1.5;
 }
 
 .contact {
   display: flex;
-  gap: 2rem;
-  align-items: center;
-  justify-content: start;
   flex-wrap: wrap;
-  padding: 2rem;
-  padding-left: 0;
-  font-size: 1rem;
+  gap: 1.75rem;
 }
 
-.separator {
-  display: none;
+.contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
-.contact svg {
-  width: 2.5rem; /* Instead of 30rem */
-  height: 2.5rem;
-  fill: var(--text-muted) !important;
+.contact a:hover {
+  color: var(--primary);
 }
 
-@media (min-width: 768px) {
-  .contact_section {
-    width: 60%;
-    text-align: center;
-    margin: 7rem;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-    width: 60%;
-  }
+.contact a .contact-icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
 
-  .command {
-    font-size: 1rem;
-  }
+.contact a .ext {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  transition: color 0.2s ease;
+}
 
-  .contact {
-    justify-content: center;
-    margin: 4rem;
-    padding: 5rem;
-  }
+.contact a:hover .ext {
+  color: var(--primary);
+}
 
-  .separator {
-    color: var(--text-muted);
-    font-weight: bold;
-    display: unset;
-  }
+.attribution {
+  margin-top: 2.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
 
-  .attribution {
-    font-size: 0.9rem; /* Desktop size */
-    text-align: center;
-  }
+.attribution a {
+  color: var(--text-muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-muted);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.attribution a:hover {
+  color: var(--primary);
+  border-color: var(--primary);
 }

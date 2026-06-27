@@ -2,14 +2,12 @@ import { hero } from "../assets/data/portfolio.json";
 
 function HeroSection() {
   return (
-      <div className="hero">
-        <div className="hero_left">
-          <h1>{hero.name}</h1>
-          <h2>{hero.title} </h2>
-          <p>{hero.tagline}</p>
-        </div>
-      </div>
-
+    <section className="hero">
+      <p className="prompt">~ whoami</p>
+      <h1>{hero.name}</h1>
+      <p className="role">{hero.title}</p>
+      <p className="tagline">{hero.tagline}</p>
+    </section>
   );
 }
 

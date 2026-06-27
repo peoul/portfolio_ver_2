@@ -1,0 +1,56 @@
+.ajile-cta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid var(--border-muted);
+  border-radius: 0.75rem;
+  background: var(--bg);
+}
+
+.ajile-cta-logo {
+  width: 2.1rem;
+  height: 2.1rem;
+  flex-shrink: 0;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-muted);
+}
+
+.ajile-cta-text {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.ajile-cta-text strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.ajile-cta-link {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--primary);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+
+.ajile-cta-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 560px) {
+  .ajile-cta {
+    flex-wrap: wrap;
+    gap: 0.85rem;
+  }
+
+  .ajile-cta-link {
+    width: 100%;
+  }
+}

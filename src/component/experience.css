@@ -1,0 +1,144 @@
+.exp-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border-muted);
+}
+
+.exp-item {
+  border-bottom: 1px solid var(--border-muted);
+}
+
+.exp-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+  padding: 1.15rem 0.25rem;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+}
+
+.exp-id {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.exp-logo {
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 0.45rem;
+  flex-shrink: 0;
+  border: 1px solid var(--border-muted);
+}
+
+.exp-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.exp-company {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.exp-role {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--primary);
+}
+
+.exp-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-shrink: 0;
+}
+
+.exp-period {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.exp-toggle {
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  line-height: 1;
+  color: var(--text-muted);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.exp-head:hover .exp-toggle {
+  color: var(--text);
+}
+
+.exp-item.open .exp-toggle {
+  transform: rotate(45deg);
+  color: var(--primary);
+}
+
+.exp-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 0 0.25rem 1.3rem;
+}
+
+.exp-blurb {
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.exp-link {
+  width: fit-content;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.exp-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.exp-highlights {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.exp-highlights li {
+  position: relative;
+  padding-left: 1.35rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.exp-highlights li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-family: var(--font-mono);
+}
+
+@media (max-width: 520px) {
+  .exp-period {
+    display: none;
+  }
+}

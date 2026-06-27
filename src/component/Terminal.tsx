@@ -1,77 +1,110 @@
 import "./terminal.css";
-import { contact } from "../assets/data/portfolio.json";
+import type { IconType } from "react-icons";
+import {
+  SiReact,
+  SiTypescript,
+  SiJavascript,
+  SiHtml5,
+  SiCss,
+  SiNodedotjs,
+  SiSpringboot,
+  SiDocker,
+  SiGithub,
+  SiClaude,
+} from "react-icons/si";
+import { VscAzure } from "react-icons/vsc";
+import { TbDatabase, TbCoffee, TbDeviceGamepad2, TbServer } from "react-icons/tb";
+
+const RESUME_URL = "/Resume_LyhongPeou.pdf";
+
+interface Skill {
+  name: string;
+  Icon: IconType;
+}
+
+const SKILLS: Record<string, Skill[]> = {
+  frontend: [
+    { name: "React", Icon: SiReact },
+    { name: "TypeScript", Icon: SiTypescript },
+    { name: "JavaScript", Icon: SiJavascript },
+    { name: "HTML", Icon: SiHtml5 },
+    { name: "CSS", Icon: SiCss },
+  ],
+  backend: [
+    { name: "Node", Icon: SiNodedotjs },
+    { name: "Convex", Icon: TbDatabase },
+    { name: "SQL", Icon: TbDatabase },
+    { name: "NoSQL", Icon: TbDatabase },
+    { name: "Spring Boot", Icon: SiSpringboot },
+  ],
+  tools: [
+    { name: "Docker", Icon: SiDocker },
+    { name: "GitHub", Icon: SiGithub },
+    { name: "Claude Code", Icon: SiClaude },
+    { name: "Azure", Icon: VscAzure },
+  ],
+};
+
+const HOBBIES: Skill[] = [
+  { name: "Coffee", Icon: TbCoffee },
+  { name: "Gaming", Icon: TbDeviceGamepad2 },
+  { name: "Homelab", Icon: TbServer },
+];
+
+function Chips({ items }: { items: Skill[] }) {
+  return (
+    <dd className="chips">
+      {items.map(({ name, Icon }) => (
+        <span className="chip" key={name}>
+          <Icon className="chip-icon" aria-hidden="true" />
+          {name}
+        </span>
+      ))}
+    </dd>
+  );
+}
+
 function Terminal() {
   return (
-    <div className="terminal">
-      <div className="header">
-        <p>Terminal — About Me</p>
-        <div className="header-action">
-          <p>⎼</p>
-          <p>□</p>
-          <p>×</p>
-        </div>
-      </div>
+    <section className="about">
+      <p className="prompt">~ cat about.txt</p>
 
-      <div className="command">
-        <div className="input-statement">
-          <p>lyhong@local ~</p>
-          <p className="input">$ Lyhong.education</p>
-          <p className="output">
-            [ "Johns Hopkins University - MS Information Systems Engineering" ,
-            "Oregon State University - BS Computer Science" ]
-          </p>
+      <dl className="about-list">
+        <div className="about-row">
+          <dt>education</dt>
+          <dd className="edu">
+            <span>
+              Johns Hopkins University{" "}
+              <em>— MS Information Systems Engineering</em>
+            </span>
+            <span>
+              Oregon State University <em>— BS Computer Science</em>
+            </span>
+          </dd>
         </div>
 
-        <div className="input-statement">
-          <p>lyhong@local ~</p>
-          <p className="input">$ Lyhong.hobbies</p>
-          <p className="output">[ "Coffee" , "Gaming" , "Homelab" ]</p>
+        {Object.entries(SKILLS).map(([label, items]) => (
+          <div className="about-row" key={label}>
+            <dt>{label}</dt>
+            <Chips items={items} />
+          </div>
+        ))}
+
+        <div className="about-row">
+          <dt>hobbies</dt>
+          <Chips items={HOBBIES} />
         </div>
 
-        <div className="input-statement">
-          <p>lyhong@local ~</p>
-          <p className="input">$ Lyhong.languages</p>
-          <p className="output">[ "TypeScript" , "C++" , "Python" ]</p>
-        </div>
-
-        <div className="input-statement">
-          <p>lyhong@local ~</p>
-          <p className="input">$ resume</p>
-          <a
-            href="https://drive.google.com/file/d/1mkDotOf5i4xw-phPVCQcBv1ROFjfnfSK/view?usp=sharing"
-            className="output"
-          >
-            📄 View PDF
-          </a>
-        </div>
-
-        <div className="input-statement">
-          <p>lyhong@local ~</p>
-          <p className="input">$ cat contact.txt</p>
-          <p className="output">
-            <a href={`mailto:${contact.email}`}>📧 gmail.com</a> ,{" "}
-            <a
-              href={contact.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              🔗 linkedin.com
-            </a>{" "}
-            ,{" "}
-            <a href={contact.github} target="_blank" rel="noopener noreferrer">
-              🐙 github.com
+        <div className="about-row">
+          <dt>resume</dt>
+          <dd>
+            <a href={RESUME_URL} target="_blank" rel="noopener noreferrer">
+              View PDF ↗
             </a>
-          </p>
+          </dd>
         </div>
-
-        <div className="input-statement">
-          <p>lyhong@local ~</p>
-          <p className="input">
-            $ <span className="cursor">_</span>
-          </p>
-        </div>
-      </div>
-    </div>
+      </dl>
+    </section>
   );
 }
 

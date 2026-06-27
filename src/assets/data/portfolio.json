@@ -1,41 +1,87 @@
 {
   "hero": {
     "name": "Lyhong Peou",
-    "title": "Developer",
-    "tagline": "Coffee → Code. Ideas → Reality.\nThis is my new beginning.\nHello World! 👋"
+    "title": "Full-Stack Developer",
+    "tagline": "Designing, building, and shipping digital products — fast."
   },
-  "projects": [
+  "experience": [
     {
-      "title": "Bamboo",
-      "description": "Building a modern note-taking application with elegant design and flexible functionality.\n\n• Full-stack development with React/TypeScript frontend and Node.js/Express backend\n• JWT authentication and PostgreSQL database integration\n• Rich text editor with folder organization system\n• Dark/light theme switching with custom CSS variables\n• Responsive design with mobile-first approach\n\nCurrently in active development with plans for PDF/Markdown export and cross-device synchronization.",
-      "tags": ["React", "TypeScript", "Node.js", "PostgreSQL", "Express", "Personal"],
-      "github": "https://github.com/peoul/bamboo"
+      "company": "AJILE Studio",
+      "role": "Co-Founder",
+      "location": "Remote",
+      "period": "May 2025 — Present",
+      "logo": "/icon.svg",
+      "link": "https://ajile.team/",
+      "blurb": "A small team of engineers that designs, builds, and ships digital products — fast, and without the agency overhead. See what we've shipped under work/ below."
     },
     {
-      "title": "Portfolio",
-      "description": "Built a responsive personal portfolio website with a terminal-inspired design and smooth user experience.\n\n• Dark/light mode toggle with custom CSS variables\n• Terminal-style interface with typing animations\n• Modal-based project showcase with mobile optimization\n• Responsive design from mobile-first to desktop",
-      "tags": ["React", "TypeScript", "CSS", "Personal"],
-      "github": "https://github.com/peoul/portfolio_ver_2"
-    },
-    {
-      "title": "Slow Typer",
-      "description": "Built a minimalist typing speed test with real-time WPM tracking and visual feedback.\n\n• Performance analytics dashboard\n• Responsive design for distraction-free practice\n• Real-time accuracy measurement",
-      "tags": ["React", "TypeScript", "CSS", "Personal"],
-      "github": "https://github.com/peoul/slow-typer"
-    },
-    {
-      "title": "Streak",
-      "description": "Developed a GitHub-style habit tracker with contribution graphs.\n\n• Visual progress tracking system\n• Daily commit tracking\n• Streak visualization and momentum building\n• Consistency-focused user experience",
-      "tags": ["React", "TypeScript", "CSS", "Personal"],
-      "github": "https://github.com/peoul/streak"
-    },
-    {
-      "title": "Clue-Less",
-      "description": "Implemented a multiplayer web version of the classic Clue board game with real-time gameplay.\n\n• Lobby system with character selection\n• Turn-based mechanics and game state sync\n• Real-time multiplayer functionality\n\nTeam project for Foundations of Software at Johns Hopkins University.\nCollaborated with Amanda Lowery (PM), Linda Nguyen (Lead Dev), and Deon Odom (QA).",
-      "tags": ["Python", "Flask", "JavaScript", "School"],
-      "github": "https://github.com/lamlinda/Clue-less"
+      "company": "Captured Sun",
+      "role": "Software Engineer Intern — Parchment",
+      "location": "Austin, TX",
+      "period": "Sep 2023 — Jun 2024",
+      "highlights": [
+        "Built the front and back end of Parchment using the Quill custom JS framework.",
+        "Engineered a filesystem-tree UI for navigating nested Spaces and dragging files across folders."
+      ]
     }
   ],
+  "work": {
+    "studio": [
+      {
+        "title": "Skylab Fitness",
+        "status": "Shipped",
+        "meta": "Client Project",
+        "description": "Skylab Fitness was running their bookings entirely manual. We built them a full-stack web app where clients can book classes and track their credit balance, while staff manage scheduling and payments from a clean admin interface. The result: less admin overhead, fewer errors, and a smoother experience for everyone.",
+        "tags": ["Next.js", "React", "Convex", "Clerk", "Tailwind CSS"],
+        "logo": "/skylab/default.svg",
+        "link": "https://skylabfitness.net/"
+      },
+      {
+        "title": "Ruma",
+        "status": "Beta",
+        "meta": "In-House Product",
+        "description": "Ruma is our own in-house product built for serious property investors. Users can model rental yields and capital growth, create and compare multiple scenarios side by side, and get fees auto-calculated. It replaces guesswork with clarity, giving investors the data they need to act with confidence. Launching soon in Malaysia.",
+        "tags": ["React", "Convex", "Clerk", "Tailwind CSS"],
+        "logo": "/ruma/default.svg",
+        "link": "https://ruma.casa/"
+      },
+      {
+        "title": "Reflect",
+        "status": "Shipped",
+        "meta": "Hackathon Project",
+        "description": "Built end-to-end during a competitive hackathon, Reflect teaches users to identify and avoid scams. It features an AI chatbot for real-time scam advice, a minigame that generates unique phishing scenarios for users to classify, and a community forum for sharing experiences. All powered by the Gemini API inside Google AI Studio.",
+        "tags": ["Google AI Studio", "Gemini API", "AI Chatbot"],
+        "link": "https://www.kaggle.com/competitions/gemini-3/writeups/new-writeup-1765521995287#3372722"
+      },
+      {
+        "title": "Orbit",
+        "status": "WIP",
+        "meta": "In-House Product",
+        "description": "Orbit is our in-house booking platform for any business that lives and dies by its calendar. Clients book and pay online, businesses manage customers and run promotions, and everything stays in one place — no more spreadsheets. Currently in active development.",
+        "tags": ["React", "Convex", "BetterAuth"]
+      }
+    ],
+    "personal": [
+      {
+        "title": "Portfolio",
+        "description": "Built a responsive personal portfolio website with a terminal-inspired design and smooth user experience.\n\n• Dark/light mode toggle with custom CSS variables\n• Terminal-style interface with typing animations\n• Modal-based project showcase with mobile optimization\n• Responsive design from mobile-first to desktop",
+        "tags": ["React", "TypeScript", "CSS", "Personal"],
+        "github": "https://github.com/peoul/portfolio_ver_2"
+      },
+      {
+        "title": "Slow Typer",
+        "description": "Built a minimalist typing speed test with real-time WPM tracking and visual feedback.\n\n• Performance analytics dashboard\n• Responsive design for distraction-free practice\n• Real-time accuracy measurement",
+        "tags": ["React", "TypeScript", "CSS", "Personal"],
+        "github": "https://github.com/peoul/slow-typer"
+      },
+      {
+        "title": "Clue-Less",
+        "description": "Implemented a multiplayer web version of the classic Clue board game with real-time gameplay.\n\n• Lobby system with character selection\n• Turn-based mechanics and game state sync\n• Real-time multiplayer functionality\n\nTeam project for Foundations of Software at Johns Hopkins University.\nCollaborated with Amanda Lowery (PM), Linda Nguyen (Lead Dev), and Deon Odom (QA).",
+        "tags": ["Python", "Flask", "JavaScript", "School"],
+        "github": "https://github.com/lamlinda/Clue-less"
+      }
+    ]
+  },
   "contact": {
     "email": "lyhongpeou.lp@gmail.com",
     "linkedin": "https://www.linkedin.com/in/lyhong-peou/",

@@ -1,105 +1,97 @@
 # Lyhong Peou - Developer Portfolio
 
-A modern, terminal-inspired portfolio website showcasing my projects and skills as a developer. Built with React, TypeScript, and featuring a sleek dark/light mode toggle.
+A minimalist, terminal-inspired portfolio website showcasing my projects and skills as a developer. Built with React, TypeScript, and React Router v7 (prerendered to static HTML), featuring a dark/light mode toggle.
 
-![Demo](./public/image.png )
+![Lyhong Peou — portfolio](./public/og-image.png)
 
 ## ✨ Features
 
-- **Terminal-Inspired Design**: Interactive command-line interface showcasing personal information
-- **Dark/Light Mode**: Seamless theme switching with smooth transitions
-- **Project Showcase**: Modal-based project browser with detailed descriptions
-- **Responsive Design**: Optimized for both desktop and mobile devices
-- **Modern Tech Stack**: Built with React 18, TypeScript, and Vite
+- **Refined terminal aesthetic**: Monospace `~ command` prompts mark each section — no window chrome, just clean type and whitespace
+- **Static prerendering (SSG)**: Routes prerender to fully-rendered HTML at build time (React Router v7 framework mode), then hydrate on the client — great SEO, hosted as static files
+- **Dark/Light mode**: Theme switching via CSS custom properties
+- **Project showcase**: Click a project to open a minimal detail panel (Escape to close)
+- **Responsive design**: Mobile-first, single centered column
+- **Data-driven content**: Update one JSON file to change what's on the page
 
 ## 🚀 Live Demo
 
-Visit the live portfolio: [me.lyhong.dev](https://me.lyhong.dev)
+Visit the live portfolio: [lyhong.dev](https://lyhong.dev)
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React 18, TypeScript
+- **Framework**: React 19 + React Router v7 (framework mode, static prerender)
+- **Hosting**: Cloudflare Pages (static)
+- **Language**: TypeScript
 - **Build Tool**: Vite
-- **Styling**: CSS3 with CSS Variables for theming
-- **Icons**: Custom SVG icons and React SVG components
-- **Design**: Mobile-first responsive design
+- **Styling**: CSS with custom properties (OKLCH color space) for theming
+- **Fonts**: Inter (sans) + JetBrains Mono (prompts, labels, tags)
+- **Icons**: SVGs imported as React components via `vite-plugin-svgr`
 
 ## 📁 Project Structure
 
+This is a React Router v7 **framework-mode** app with `appDirectory` set to `src`, so the
+framework convention files live in `src/` (there is no `index.html` or `main.tsx`):
+
 ```
 src/
-├── assets/
-│   ├── data/
-│   │   └── portfolio.json      # Portfolio data (projects, contact info)
-│   └── image/                  # SVG icons
+├── root.tsx                    # Document shell (<html>/<head>/<body>, Meta/Links/Scripts)
+├── routes.ts                   # Route config
+├── routes/
+│   └── home.tsx                # The single page; owns theme state, assembles sections
 ├── component/
-│   ├── Contact.tsx             # Contact section component
-│   ├── Hero.tsx                # Hero/intro section
-│   ├── Recent.tsx              # Projects showcase with modals
-│   ├── Terminal.tsx            # Terminal-style about section
-│   └── *.css                   # Component styles
-├── App.tsx                     # Main app component
-├── App.css                     # Global app styles
-├── index.css                   # CSS variables and theming
-└── main.tsx                    # App entry point
+│   ├── Hero.tsx                # "~ whoami" intro
+│   ├── Terminal.tsx            # "~ cat about.txt" about section
+│   ├── Experience.tsx          # "~ cat experience" work history
+│   ├── Recent.tsx              # "~ ls work/" project list + detail modal
+│   ├── Contact.tsx             # "~ contact" links + footer
+│   └── *.css                   # Co-located component styles
+├── assets/
+│   ├── data/portfolio.json     # Content: hero, projects, contact
+│   └── image/                  # SVG icons
+├── App.css                     # Layout, navbar, hero styles
+└── index.css                   # CSS variables, theming, fonts, shared classes
 ```
-
-## 🎨 Design Features
-
-### Terminal Interface
-- Interactive command-line style presentation
-- Animated cursor with blinking effect
-- Realistic terminal commands showcasing:
-  - Current directory (`pwd`)
-  - Resume download link
-  - Programming languages
-  - Contact information
-
-### Project Browser
-- File explorer-inspired project display
-- Modal popups with detailed project information
-- GitHub integration for source code links
-- Technology tags for each project
-
-### Theming System
-- CSS custom properties for consistent theming
-- OKLCH color space for better color consistency
-- Smooth transitions between themes
-- High contrast ratios for accessibility
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js (v16 or higher)
-- npm or yarn
+- Node.js (v20 or higher recommended)
+- npm
 
 ### Installation
 
-1. Clone the repository:
 ```bash
-git clone https://github.com/peoul/portfolio.git
-cd portfolio
-```
-
-2. Install dependencies:
-```bash
+git clone https://github.com/peoul/portfolio_ver_2.git
+cd portfolio_ver_2
 npm install
 ```
 
-3. Start the development server:
+### Development
+
 ```bash
-npm run dev
+npm run dev        # Dev server with HMR
 ```
 
-4. Open your browser and visit `http://localhost:5173`
+Open `http://localhost:5173`.
 
-### Build for Production
+### Other commands
+
+```bash
+npm run build      # Static build → prerenders routes into build/client/
+npm run preview    # Preview the built static site locally
+npm run typecheck  # react-router typegen && tsc -b  (run after changing routes)
+npm run lint       # eslint
+```
+
+### Deploy (Cloudflare Pages)
+
+Static site — connect the repo in Cloudflare Pages with **build command** `npm run build`
+and **output directory** `build/client`, or deploy the built folder directly:
 
 ```bash
 npm run build
+npx wrangler pages deploy build/client
 ```
-
-The built files will be in the `dist/` directory.
 
 ## 📝 Customization
 
@@ -109,9 +101,8 @@ Edit `src/assets/data/portfolio.json` to update:
 - Project information
 - Contact details
 
-### Styling
-- Global theme variables: `src/index.css`
-- Component-specific styles: Individual CSS files in `src/component/`
+> Note: the about facts (education, hobbies, languages) are currently hardcoded in
+> `src/component/Terminal.tsx`, not in the JSON.
 
 ### Adding Projects
 Add new projects to the `projects` array in `portfolio.json`:
@@ -125,36 +116,24 @@ Add new projects to the `projects` array in `portfolio.json`:
 }
 ```
 
-## 🎯 Current Projects Featured
+### Styling & Theming
+- Theme variables and fonts: `src/index.css` (OKLCH custom properties; dark is the
+  `:root` default, `[data-theme="light"]` overrides)
+- Layout and hero: `src/App.css`
+- Component-specific styles: co-located `*.css` files in `src/component/`
 
-- **Slow Typer**: Minimalist typing speed test with real-time WPM tracking
-- **Streak**: GitHub-style habit tracker with contribution graphs  
-- **Clue-Less**: Multiplayer web version of the classic Clue board game
+The "refined terminal" look uses a monospace `~ command` prompt to head each section.
+Keep new sections consistent by reusing the `.prompt` class.
 
 ## 📱 Responsive Design
 
-The portfolio is fully responsive with breakpoints at:
-- Mobile: < 768px
-- Desktop: ≥ 768px
-
-Features adaptive layouts, font sizes, and spacing for optimal viewing on all devices.
-
-## 🌟 Performance Features
-
-- Vite for fast development and optimized builds
-- Efficient component architecture
-- Optimized SVG icons
-- CSS custom properties for minimal runtime calculations
+Mobile-first, with a breakpoint at 768px for desktop spacing and type sizes.
 
 ## 📧 Contact
 
 - **Email**: lyhongpeou.lp@gmail.com
 - **LinkedIn**: [linkedin.com/in/lyhong-peou](https://www.linkedin.com/in/lyhong-peou/)
 - **GitHub**: [github.com/peoul](https://github.com/peoul)
-
-## 🙏 Acknowledgments
-
-Inspired by [Justin Chi](https://www.justinchi.me) - Thanks for the design inspiration!
 
 ## 📄 License
 

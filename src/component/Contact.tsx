@@ -1,38 +1,32 @@
 import { contact } from "../assets/data/portfolio.json";
-import LinkedIn from "../assets/image/linkedin.svg?react";
-import Github from "../assets/image/github.svg?react";
-
+import { FaEnvelope, FaLinkedinIn, FaGithub } from "react-icons/fa6";
 import "./contact.css";
 
 function ContactSection() {
   return (
-    <div className="contact_section">
-      <h2> Contact Me</h2>
+    <section className="contact_section">
+      <p className="prompt">~ contact</p>
 
       <div className="contact">
-        <a>{contact.email}</a>
-        <span className="separator">||</span>
-        <a>
-          <LinkedIn />
+        <a href={`mailto:${contact.email}`}>
+          <FaEnvelope className="contact-icon" aria-hidden="true" /> email{" "}
+          <span className="ext">↗</span>
         </a>
-        <span className="separator">||</span>
-        <a>
-          <Github />
+        <a href={contact.linkedin} target="_blank" rel="noopener noreferrer">
+          <FaLinkedinIn className="contact-icon" aria-hidden="true" /> linkedin{" "}
+          <span className="ext">↗</span>
+        </a>
+        <a href={contact.github} target="_blank" rel="noopener noreferrer">
+          <FaGithub className="contact-icon" aria-hidden="true" /> github{" "}
+          <span className="ext">↗</span>
         </a>
       </div>
 
       <p className="attribution">
-        Made By Lyhong Peou @2025 and inspired by{" "}
-        <a
-          href="https://www.justinchi.me"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Justin Chi 
-        </a>
-        
+        Made by Lyhong Peou © 2025
+        <span className="cursor" aria-hidden="true" />
       </p>
-    </div>
+    </section>
   );
 }
 

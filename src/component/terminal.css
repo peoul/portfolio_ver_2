@@ -1,104 +1,82 @@
-.terminal {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: center;
-  margin: 2rem;
-  width: 90%;
-  background-color: var(--bg);
-  border-radius: 1rem;
-  border: 2px solid var(--border);
-}
-
-.header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: min-content;
-  width: 100%;
-  background-color: var(--bg-light);
-  border-top-right-radius: 1rem;
-  border-top-left-radius: 1rem;
-  padding: 0.5rem 1rem 0.5rem 1rem;
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--text);
-  flex-shrink: 0;
-}
-
-.header-action {
-  display: flex;
-  gap: 1rem;
-}
-
-.command {
-  min-height: min-content;
-  padding: 2.5rem;
-  border-top: 1px solid var(--border-muted);
-  color: var(--text-muted);
+.about-list {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  font-size: 1rem;
-  width: 100%;
-  height: min-content;
 }
 
-.input-statement {
+.about-row {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.about-row dt {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  padding-top: 0.1rem;
+}
+
+.about-row dd {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-}
-
-.input {
+  gap: 0.3rem;
   color: var(--text);
-  font-weight: 300;
-  letter-spacing: 0.5px;
-  text-wrap: wrap;
 }
 
-.output {
+.about-row a {
+  color: var(--primary);
+  text-decoration: none;
+  width: fit-content;
+}
+
+.about-row a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Degree lines: school in full color, degree muted */
+.about-row .edu em {
+  font-style: normal;
   color: var(--text-muted);
-  letter-spacing: 0.5px;
-  text-wrap: wrap;
 }
 
-.output a {
-  text-decoration: none;
+/* Skill / hobby pills */
+.about-row dd.chips {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.about-row .chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  border: 1px solid var(--border-muted);
+  border-radius: 0.45rem;
+  padding: 0.25rem 0.6rem;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.about-row .chip-icon {
+  width: 0.95rem;
+  height: 0.95rem;
+  flex-shrink: 0;
+  color: var(--primary);
+}
+
+.about-row .chip:hover {
   color: var(--text);
+  border-color: var(--text-muted);
 }
 
-.output-folder {
-  color: var(--secondary);
-  font-weight: 700;
-}
-
-a {
-  text-decoration: none;
-}
-
-.cursor {
-  animation: blink 1s infinite;
-  color: var(--text);
-}
-
-@keyframes blink {
-  0%,
-  50% {
-    opacity: 1;
-  }
-  51%,
-  100% {
-    opacity: 0;
-  }
-}
-
-@media (min-width: 768px) {
-  .terminal {
-    margin: 7rem;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-    width: 65%;
+@media (max-width: 520px) {
+  .about-row {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
   }
 }

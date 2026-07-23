@@ -13,7 +13,14 @@ import {
   SiClaude,
 } from "react-icons/si";
 import { VscAzure } from "react-icons/vsc";
-import { TbDatabase, TbCoffee, TbDeviceGamepad2, TbServer } from "react-icons/tb";
+import { TbDatabase } from "react-icons/tb";
+import Section from "./Section";
+import {
+  DoodleCoffee,
+  DoodleGamepad,
+  DoodleServer,
+  DoodleExternal,
+} from "./Doodle";
 
 const RESUME_URL = "/Resume_LyhongPeou.pdf";
 
@@ -45,66 +52,76 @@ const SKILLS: Record<string, Skill[]> = {
   ],
 };
 
-const HOBBIES: Skill[] = [
-  { name: "Coffee", Icon: TbCoffee },
-  { name: "Gaming", Icon: TbDeviceGamepad2 },
-  { name: "Homelab", Icon: TbServer },
+// Generic subjects — these get the hand-drawn doodle treatment.
+const HOBBIES = [
+  { name: "Coffee", Doodle: DoodleCoffee },
+  { name: "Gaming", Doodle: DoodleGamepad },
+  { name: "Homelab", Doodle: DoodleServer },
 ];
 
-function Chips({ items }: { items: Skill[] }) {
+function Row({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <dd className="chips">
-      {items.map(({ name, Icon }) => (
-        <span className="chip" key={name}>
-          <Icon className="chip-icon" aria-hidden="true" />
-          {name}
-        </span>
-      ))}
-    </dd>
+    <div className="about-row">
+      <span className="label about-key">{label}</span>
+      <div className="about-val">{children}</div>
+    </div>
   );
 }
 
 function Terminal() {
   return (
-    <section className="about">
-      <p className="prompt">~ cat about.txt</p>
-
-      <dl className="about-list">
-        <div className="about-row">
-          <dt>education</dt>
-          <dd className="edu">
-            <span>
-              Johns Hopkins University{" "}
-              <em>— MS Information Systems Engineering</em>
-            </span>
-            <span>
-              Oregon State University <em>— BS Computer Science</em>
-            </span>
-          </dd>
-        </div>
+    <Section index="01" label="About" id="about">
+      <dl className="about">
+        <Row label="Education">
+          <ul className="edu">
+            <li>
+              <span className="edu-school">Johns Hopkins University</span>
+              <span className="edu-degree">MS Information Systems Engineering</span>
+            </li>
+            <li>
+              <span className="edu-school">Oregon State University</span>
+              <span className="edu-degree">BS Computer Science</span>
+            </li>
+          </ul>
+        </Row>
 
         {Object.entries(SKILLS).map(([label, items]) => (
-          <div className="about-row" key={label}>
-            <dt>{label}</dt>
-            <Chips items={items} />
-          </div>
+          <Row label={label} key={label}>
+            <div className="chips">
+              {items.map(({ name, Icon }) => (
+                <span className="chip" key={name}>
+                  <Icon className="chip-icon" aria-hidden="true" />
+                  {name}
+                </span>
+              ))}
+            </div>
+          </Row>
         ))}
 
-        <div className="about-row">
-          <dt>hobbies</dt>
-          <Chips items={HOBBIES} />
-        </div>
+        <Row label="Hobbies">
+          <div className="chips">
+            {HOBBIES.map(({ name, Doodle }) => (
+              <span className="chip chip--doodle" key={name}>
+                <Doodle className="chip-doodle" />
+                {name}
+              </span>
+            ))}
+          </div>
+        </Row>
 
-        <div className="about-row">
-          <dt>resume</dt>
-          <dd>
-            <a href={RESUME_URL} target="_blank" rel="noopener noreferrer">
-              View PDF ↗
-            </a>
-          </dd>
-        </div>
+        <Row label="Résumé">
+          <a
+            className="resume-link"
+            href={RESUME_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View PDF
+            <DoodleExternal className="link-arrow" />
+          </a>
+        </Row>
       </dl>
-    </section>
+    </Section>
   );
 }
 

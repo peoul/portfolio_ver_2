@@ -1,4 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/*
+ * Visual direction: TE × Doodle.
+ * Structure is Swiss (this file + component CSS). Marks are hand-drawn
+ * (Doodle.tsx). Never both, never neither.
+ */
 
 *,
 *::before,
@@ -9,72 +15,48 @@
 }
 
 :root {
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Inter', 'Helvetica Neue', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 
-  /* hsl (fallback color) */
-  --bg-dark: hsl(228 79% 2%);
-  --bg: hsl(222 55% 5%);
-  --bg-light: hsl(220 35% 10%);
-  --text: hsl(220 100% 98%);
-  --text-muted: hsl(220 35% 73%);
-  --highlight: hsl(220 20% 42%);
-  --border: hsl(220 26% 31%);
-  --border-muted: hsl(220 37% 20%);
-  --primary: hsl(220 78% 76%);
-  --secondary: hsl(40 53% 60%);
-  --danger: hsl(9 26% 64%);
-  --warning: hsl(52 19% 57%);
-  --success: hsl(146 17% 59%);
-  --info: hsl(217 28% 65%);
-  /* oklch */
-  --bg-dark: oklch(0.1 0.025 264);
-  --bg: oklch(0.15 0.025 264);
-  --bg-light: oklch(0.2 0.025 264);
-  --text: oklch(0.96 0.05 264);
-  --text-muted: oklch(0.76 0.05 264);
-  --highlight: oklch(0.5 0.05 264);
-  --border: oklch(0.4 0.05 264);
-  --border-muted: oklch(0.3 0.05 264);
-  --primary: oklch(0.76 0.1 264);
-  --secondary: oklch(0.76 0.1 84);
-  --danger: oklch(0.7 0.05 30);
-  --warning: oklch(0.7 0.05 100);
-  --success: oklch(0.7 0.05 160);
-  --info: oklch(0.7 0.05 260);
+  /* 8px baseline grid — every spacing value is a multiple of 8 */
+  --s1: 0.5rem;   /*  8px */
+  --s2: 1rem;     /* 16px */
+  --s3: 1.5rem;   /* 24px */
+  --s4: 2rem;     /* 32px */
+  --s5: 3rem;     /* 48px */
+  --s6: 4rem;     /* 64px */
+  --s7: 6rem;     /* 96px */
+
+  --radius: 2px; /* max, per spec — perfect rectangles otherwise */
+  --hair: 1px;
+
+  /* Dark is the default, so the prerendered first paint (which has no
+     data-theme attribute yet) already matches — no theme flash on load.
+     Base #1A1A1A / #F5F5F3 with three grays between. */
+  color-scheme: dark;
+  --bg: #1a1a1a;
+  --panel: #202020;
+  --ink: #f5f5f3;
+  --ink-2: #b7b7b3;
+  --ink-3: #7d7d7a;
+  --line: #2e2e2c;
+  --line-2: #3d3d3a;
+  --accent: #ff5500;
+  --accent-ink: #1a1a1a;
 }
 
+/* Light = paper. */
 [data-theme="light"] {
-  /* hsl (fallback color) */
-  --bg-dark: hsl(220 59% 91%);
-  --bg: hsl(220 100% 97%);
-  --bg-light: hsl(220 100% 100%);
-  --text: hsl(226 85% 7%);
-  --text-muted: hsl(220 26% 31%);
-  --highlight: hsl(220 100% 100%);
-  --border: hsl(220 19% 53%);
-  --border-muted: hsl(220 27% 65%);
-  --primary: hsl(221 49% 33%);
-  --secondary: hsl(44 100% 14%);
-  --danger: hsl(9 21% 41%);
-  --warning: hsl(52 23% 34%);
-  --success: hsl(147 19% 36%);
-  --info: hsl(217 22% 41%);
-  /* oklch */
-  --bg-dark: oklch(0.92 0.025 264);
-  --bg: oklch(0.96 0.025 264);
-  --bg-light: oklch(1 0.025 264);
-  --text: oklch(0.15 0.05 264);
-  --text-muted: oklch(0.4 0.05 264);
-  --highlight: oklch(1 0.05 264);
-  --border: oklch(0.6 0.05 264);
-  --border-muted: oklch(0.7 0.05 264);
-  --primary: oklch(0.4 0.1 264);
-  --secondary: oklch(0.4 0.1 84);
-  --danger: oklch(0.5 0.05 30);
-  --warning: oklch(0.5 0.05 100);
-  --success: oklch(0.5 0.05 160);
-  --info: oklch(0.5 0.05 260);
+  color-scheme: light;
+  --bg: #f5f5f3;
+  --panel: #fbfbfa;
+  --ink: #1a1a1a;
+  --ink-2: #4a4a48;
+  --ink-3: #8a8a87;
+  --line: #e2e2df;
+  --line-2: #cfcfca;
+  --accent: #ff5500;
+  --accent-ink: #f5f5f3;
 }
 
 html {
@@ -83,39 +65,84 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--bg-dark);
-  color: var(--text);
-  line-height: 1.6;
+  font-size: 0.9375rem; /* 15px */
+  line-height: 1.55;
+  letter-spacing: -0.006em;
+  background-color: var(--bg);
+  color: var(--ink);
+  font-feature-settings: 'cv11', 'ss01';
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-/* Quiet monospace prompt that marks each section, e.g. "~ whoami" */
-.prompt {
+/* ---- shared rigid primitives ------------------------------------------- */
+
+/* 10–11px uppercase label, muted gray, tracked out */
+.label {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem; /* 11px */
+  font-weight: 500;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-3);
+}
+
+/* tabular monospace index numbers (01, 02 …) */
+.idx {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 400;
-  letter-spacing: 0.01em;
-  color: var(--primary);
-  margin-bottom: 1.5rem;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  font-feature-settings: 'tnum' 1;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+}
+
+/* 1px hairline divider — never thicker, never dashed */
+.hair {
+  border: 0;
+  border-top: var(--hair) solid var(--line);
+}
+
+/* Rendered, but out of view — used to keep content in the markup for
+   crawlers when the visible UI only reveals it on interaction. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
 }
 
 @keyframes blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 .cursor {
   display: inline-block;
-  width: 0.55em;
+  width: 0.5em;
   height: 1em;
   vertical-align: text-bottom;
-  background-color: var(--primary);
-  margin-left: 0.15em;
+  background-color: var(--accent);
+  margin-left: 0.25em;
   animation: blink 1.1s steps(1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .cursor { animation: none; }
 }

@@ -6,7 +6,9 @@ import tseslint from 'typescript-eslint'
 import { globalIgnores } from 'eslint/config'
 
 export default tseslint.config([
-  globalIgnores(['dist']),
+  // `build` is the React Router output dir (not `dist`); `.react-router`
+  // holds generated route types — neither is ours to lint.
+  globalIgnores(['dist', 'build', '.react-router']),
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
@@ -18,6 +20,15 @@ export default tseslint.config([
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
+    },
+  },
+  {
+    // Framework-mode route modules must export `meta`/`links` alongside the
+    // component — that is the React Router contract, so the react-refresh
+    // single-export rule doesn't apply here.
+    files: ['src/root.tsx', 'src/routes/**/*.tsx'],
+    rules: {
+      'react-refresh/only-export-components': 'off',
     },
   },
 ])

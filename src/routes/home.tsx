@@ -3,6 +3,8 @@ import "../App.css";
 import type { Route } from "./+types/home";
 import { hero, contact } from "../assets/data/portfolio.json";
 import ModeIcon from "../assets/image/mode.svg?react";
+import Intro from "../component/Intro";
+import Scribble from "../component/Scribble";
 import HeroSection from "../component/Hero";
 import Terminal from "../component/Terminal";
 import Experience from "../component/Experience";
@@ -23,7 +25,7 @@ export const meta: Route.MetaFunction = () => {
     { name: "description", content: description },
     { name: "author", content: hero.name },
     { name: "robots", content: "index, follow" },
-    { name: "theme-color", content: "#0b0e16" },
+    { name: "theme-color", content: "#1a1a1a" },
 
     { property: "og:type", content: "website" },
     { property: "og:site_name", content: hero.name },
@@ -67,43 +69,47 @@ export const meta: Route.MetaFunction = () => {
 };
 
 export default function Home() {
-  const [light, setLight] = useState(true);
+  // Dark is the default — it matches the CSS :root, so there is no theme
+  // flash on first paint.
+  const [dark, setDark] = useState(true);
 
-  const lightHandler = () => {
-    setLight((prev) => !prev);
-  };
+  const toggleTheme = () => setDark((prev) => !prev);
 
   useEffect(() => {
-    document.documentElement.setAttribute(
-      "data-theme",
-      light ? "dark" : "light"
-    );
-  }, [light]);
+    document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+  }, [dark]);
 
   return (
-    <>
-      <div className="navbar">
-        <button
-          className="mode_btn"
-          onClick={lightHandler}
-          title={light ? "Light mode" : "Dark mode"}
-        >
-          <ModeIcon />
-        </button>
-      </div>
-      <div className="container">
+    <div className="shell">
+      <Intro />
+
+      <header className="topbar">
+        <span className="wordmark">
+          <span className="wordmark-dot" aria-hidden="true" />
+          <span className="label">{hero.name} · Portfolio</span>
+        </span>
+        <div className="topbar-controls">
+          <Scribble />
+
+          <button
+            className="mode_btn"
+            onClick={toggleTheme}
+            title={dark ? "Light mode" : "Dark mode"}
+            aria-label="Toggle color theme"
+          >
+            <ModeIcon />
+          </button>
+        </div>
+      </header>
+
+      <main className="container">
         <HeroSection />
-
         <Terminal />
-
         <Experience />
-
         <RecentProject />
-
         <AjileStudio />
-
         <ContactSection />
-      </div>
-    </>
+      </main>
+    </div>
   );
 }

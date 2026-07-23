@@ -1,56 +1,72 @@
+/* rigid call-out panel — perfect rectangle, accent left edge marks it primary */
 .ajile-cta {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr;
   align-items: center;
-  gap: 1rem;
-  padding: 1.1rem 1.25rem;
-  border: 1px solid var(--border-muted);
-  border-radius: 0.75rem;
-  background: var(--bg);
+  column-gap: var(--s2);
+  row-gap: var(--s2);
+  padding: var(--s3);
+  border: var(--hair) solid var(--line-2);
+  border-left: 2px solid var(--accent);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: inherit;
+  background: var(--panel);
+  transition: border-color 0.15s ease;
 }
 
-.ajile-cta-logo {
-  width: 2.1rem;
-  height: 2.1rem;
-  flex-shrink: 0;
-  border-radius: 0.5rem;
-  border: 1px solid var(--border-muted);
+.ajile-cta:hover {
+  border-color: var(--line-2);
+  border-left-color: var(--accent);
 }
 
-.ajile-cta-text {
-  flex: 1;
-  min-width: 0;
-  font-size: 0.9rem;
-  line-height: 1.55;
-  color: var(--text-muted);
+.ajile-logo {
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
 }
 
-.ajile-cta-text strong {
-  color: var(--text);
+.ajile-text {
+  font-size: 0.9375rem;
+  color: var(--ink-2);
+}
+
+.ajile-text strong {
+  color: var(--ink);
   font-weight: 600;
 }
 
-.ajile-cta-link {
-  flex-shrink: 0;
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  color: var(--primary);
-  text-decoration: none;
-  white-space: nowrap;
-  transition: opacity 0.2s ease;
+.ajile-go {
+  grid-column: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-weight: 600;
+  color: var(--ink);
 }
 
-.ajile-cta-link:hover {
-  text-decoration: underline;
-  text-underline-offset: 3px;
+.ajile-arrow {
+  width: 1.125rem;
+  height: 1.125rem;
+  color: var(--ink-3);
+  transition: color 0.15s ease, transform 0.15s ease;
 }
 
-@media (max-width: 560px) {
+.ajile-cta:hover .ajile-go {
+  color: var(--accent);
+}
+
+.ajile-cta:hover .ajile-arrow {
+  color: var(--accent);
+  transform: translateX(3px);
+}
+
+@media (max-width: 767px) {
   .ajile-cta {
-    flex-wrap: wrap;
-    gap: 0.85rem;
+    grid-template-columns: 1fr;
   }
 
-  .ajile-cta-link {
-    width: 100%;
+  .ajile-go {
+    grid-column: 1;
   }
 }

@@ -1,0 +1,139 @@
+/* Visitor-drawn marks — the loose layer, handed to the reader. */
+
+/* the toggle, sitting beside the theme button */
+.draw_btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4375rem;
+  height: 2rem;
+  padding: 0 0.625rem;
+  background: transparent;
+  border: var(--hair) solid var(--line-2);
+  border-radius: var(--radius);
+  cursor: pointer;
+  color: var(--ink-2);
+  transition: border-color 0.15s ease, color 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.draw_btn:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.draw_btn[aria-pressed="true"] {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.draw_btn .label {
+  color: currentColor;
+}
+
+.draw_btn-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* the drawing surface: spans the document, sits under the top bar */
+.scribble-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 40;
+  cursor: crosshair;
+  touch-action: none; /* let a finger draw instead of scrolling */
+  overscroll-behavior: contain;
+}
+
+.scribble-canvas[data-tool="erase"] {
+  cursor: cell;
+}
+
+/* Strokes are filled variable-width outlines, not stroked centre lines —
+   that is what gives the pencil its taper and pressure response. */
+.scribble-canvas path {
+  fill: var(--accent);
+  stroke: none;
+  opacity: 0.88; /* graphite lets a little of the page through */
+}
+
+/* floating controls while drawing */
+.scribble-bar {
+  position: fixed;
+  z-index: 45;
+  left: 50%;
+  bottom: var(--s3);
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: var(--s1);
+  padding: 0.25rem 0.375rem;
+  background: var(--panel);
+  border: var(--hair) solid var(--line-2);
+  border-radius: var(--radius);
+  box-shadow: 1px 1px 0 var(--line-2);
+}
+
+.scribble-tools {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* icon buttons — rigid squares, 2px radius */
+.scribble-tool {
+  width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: var(--hair) solid transparent;
+  border-radius: var(--radius);
+  cursor: pointer;
+  color: var(--ink-2);
+  transition: color 0.15s ease, border-color 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.scribble-tool:hover:not(:disabled) {
+  color: var(--ink);
+  border-color: var(--line-2);
+}
+
+/* the selected tool is the one thing marked in accent */
+.scribble-tool[aria-pressed="true"] {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.scribble-tool:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.scribble-icon {
+  width: 1.0625rem;
+  height: 1.0625rem;
+}
+
+.scribble-sep {
+  width: var(--hair);
+  height: 1.25rem;
+  background: var(--line);
+}
+
+.scribble-done:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 520px) {
+  .draw_btn .label {
+    display: none;
+  }
+
+  .draw_btn {
+    padding: 0 0.5rem;
+  }
+}

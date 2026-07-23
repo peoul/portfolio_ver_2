@@ -2,7 +2,8 @@
   "hero": {
     "name": "Lyhong Peou",
     "title": "Full-Stack Developer",
-    "tagline": "Designing, building, and shipping digital products — fast."
+    "tagline": "Designing, building, and shipping digital products — fast.",
+    "welcome": "Glad you stopped by — take a look around."
   },
   "experience": [
     {
@@ -22,6 +23,16 @@
       "highlights": [
         "Built the front and back end of Parchment using the Quill custom JS framework.",
         "Engineered a filesystem-tree UI for navigating nested Spaces and dragging files across folders."
+      ]
+    },
+    {
+      "company": "Oregon State University",
+      "role": "IT Technician — Part-time",
+      "location": "Corvallis, OR",
+      "period": "Mar 2022 — Jun 2024",
+      "highlights": [
+        "Assisted 41,000 students and faculty with various IT requirements at Oregon State University.",
+        "Collaborated with specialized teams to resolve complex IT issues promptly and efficiently, minimizing disruption."
       ]
     }
   ],
@@ -58,7 +69,8 @@
         "status": "WIP",
         "meta": "In-House Product",
         "description": "Orbit is our in-house booking platform for any business that lives and dies by its calendar. Clients book and pay online, businesses manage customers and run promotions, and everything stays in one place — no more spreadsheets. Currently in active development.",
-        "tags": ["React", "Convex", "BetterAuth"]
+        "tags": ["React", "Convex", "BetterAuth"],
+        "link": "https://orbitstudios.app/"
       }
     ],
     "personal": [

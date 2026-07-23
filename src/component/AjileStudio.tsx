@@ -1,5 +1,7 @@
 import "./ajile.css";
 import { experience } from "../assets/data/portfolio.json";
+import Section from "./Section";
+import { DoodleArrow } from "./Doodle";
 
 interface Ajile {
   company: string;
@@ -13,28 +15,31 @@ function AjileStudio() {
   if (!ajile?.link) return null;
 
   return (
-    <aside className="ajile-cta">
-      {ajile.logo && (
-        <img
-          className="ajile-cta-logo"
-          src={ajile.logo}
-          alt=""
-          aria-hidden="true"
-        />
-      )}
-      <p className="ajile-cta-text">
-        <strong>{ajile.company}</strong> — my team designs, builds, and ships
-        digital products, fast. Got something in mind?
-      </p>
+    <Section index="04" label="Studio" id="studio">
       <a
-        className="ajile-cta-link"
+        className="ajile-cta"
         href={ajile.link}
         target="_blank"
         rel="noopener noreferrer"
       >
-        ajile.team ↗
+        {ajile.logo && (
+          <img
+            className="ajile-logo"
+            src={ajile.logo}
+            alt=""
+            aria-hidden="true"
+          />
+        )}
+        <p className="ajile-text">
+          <strong>{ajile.company}</strong> — my team designs, builds, and ships
+          digital products, fast. Got something in mind?
+        </p>
+        <span className="ajile-go">
+          ajile.team
+          <DoodleArrow className="ajile-arrow" />
+        </span>
       </a>
-    </aside>
+    </Section>
   );
 }
 

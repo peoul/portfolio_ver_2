@@ -1,82 +1,122 @@
-.about-list {
+.about {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
 }
 
+/* label / value rows separated by hairlines */
 .about-row {
   display: grid;
-  grid-template-columns: 7rem 1fr;
-  gap: 1.25rem;
+  grid-template-columns: 6rem 1fr;
+  gap: var(--s3);
   align-items: start;
+  padding-block: var(--s3);
+  border-top: var(--hair) solid var(--line);
 }
 
-.about-row dt {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  padding-top: 0.1rem;
+.about-row:first-child {
+  border-top: 0;
+  padding-top: 0;
 }
 
-.about-row dd {
+.about-key {
+  padding-top: 0.25rem; /* optical baseline with chips */
+}
+
+.about-val {
+  min-width: 0;
+}
+
+/* education */
+.edu {
+  list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
-  color: var(--text);
+  gap: var(--s2);
 }
 
-.about-row a {
-  color: var(--primary);
-  text-decoration: none;
-  width: fit-content;
+.edu li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
 }
 
-.about-row a:hover {
-  text-decoration: underline;
-  text-underline-offset: 3px;
+.edu-school {
+  font-weight: 600;
+  color: var(--ink);
 }
 
-/* Degree lines: school in full color, degree muted */
-.about-row .edu em {
-  font-style: normal;
-  color: var(--text-muted);
+.edu-degree {
+  font-size: 0.8125rem;
+  color: var(--ink-2);
 }
 
-/* Skill / hobby pills */
-.about-row dd.chips {
-  flex-direction: row;
+/* chips — rigid rectangles, 2px radius max */
+.chips {
+  display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: var(--s1);
 }
 
-.about-row .chip {
+.chip {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  border: 1px solid var(--border-muted);
-  border-radius: 0.45rem;
-  padding: 0.25rem 0.6rem;
-  transition: color 0.2s ease, border-color 0.2s ease;
+  gap: 0.5rem;
+  padding: 0.375rem 0.625rem;
+  border: var(--hair) solid var(--line-2);
+  border-radius: var(--radius);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--ink);
+  transition: border-color 0.15s ease;
 }
 
-.about-row .chip-icon {
-  width: 0.95rem;
-  height: 0.95rem;
+.chip:hover {
+  border-color: var(--ink);
+}
+
+.chip-icon {
+  width: 0.9375rem;
+  height: 0.9375rem;
+  color: var(--ink-2);
   flex-shrink: 0;
-  color: var(--primary);
 }
 
-.about-row .chip:hover {
-  color: var(--text);
-  border-color: var(--text-muted);
+.chip-doodle {
+  width: 1.15rem;
+  height: 1.15rem;
+  color: var(--ink-2);
+  flex-shrink: 0;
 }
 
-@media (max-width: 520px) {
+.chip--doodle:hover .chip-doodle {
+  color: var(--accent);
+}
+
+/* résumé link */
+.resume-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.link-arrow {
+  width: 1rem;
+  height: 1rem;
+  color: var(--ink-3);
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.resume-link:hover .link-arrow {
+  color: var(--accent);
+  transform: translate(1px, -1px);
+}
+
+@media (max-width: 767px) {
   .about-row {
     grid-template-columns: 1fr;
-    gap: 0.35rem;
+    gap: var(--s1);
   }
 }

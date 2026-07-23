@@ -1,76 +1,174 @@
-.navbar {
-  max-width: 44rem;
+/* ---- rigid layout shell ------------------------------------------------- */
+
+.shell {
+  max-width: 60rem;
   margin: 0 auto;
-  padding: 1.5rem 1.25rem 0;
+  padding-inline: var(--s3);
+}
+
+/* top bar: wordmark + mode toggle, on a hairline */
+.topbar {
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-between;
+  height: 4rem;
+  border-bottom: var(--hair) solid var(--line);
+  /* stays above the scribble canvas so its own controls remain clickable */
+  position: relative;
+  z-index: 50;
+  background: var(--bg);
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.wordmark-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius);
+  background: var(--accent);
+}
+
+.topbar-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--s1);
 }
 
 .mode_btn {
   background: transparent;
-  border: 1px solid var(--border-muted);
-  border-radius: 0.5rem;
-  width: 2.5rem;
-  height: 2.5rem;
+  border: var(--hair) solid var(--line-2);
+  border-radius: var(--radius);
+  width: 2rem;
+  height: 2rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: var(--text-muted);
-  transition: border-color 0.2s ease, color 0.2s ease;
+  color: var(--ink-2);
+  transition: border-color 0.15s ease, color 0.15s ease;
   -webkit-tap-highlight-color: transparent;
 }
 
 .mode_btn:hover {
-  border-color: var(--text-muted);
-  color: var(--text);
+  border-color: var(--ink);
+  color: var(--ink);
 }
 
 .mode_btn svg {
-  width: 1.1rem;
-  height: 1.1rem;
-  stroke: currentColor !important;
+  width: 1rem;
+  height: 1rem;
+  stroke: currentColor;
 }
 
 .container {
-  max-width: 44rem;
-  margin: 0 auto;
-  padding: 2.25rem 1.25rem 4rem;
   display: flex;
   flex-direction: column;
-  gap: 3.5rem;
 }
 
-/* ---- Hero / whoami ---- */
+/* ---- section frame ------------------------------------------------------ */
+
+.section {
+  display: grid;
+  grid-template-columns: 8.5rem 1fr;
+  gap: var(--s4);
+  padding-block: var(--s6);
+  border-top: var(--hair) solid var(--line);
+}
+
+.section-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s1);
+  align-self: start;
+  position: sticky;
+  top: var(--s3);
+}
+
+.section-head .idx {
+  line-height: 1;
+}
+
+.section-mark {
+  color: var(--ink-3);
+  margin-top: var(--s1);
+}
+
+.section-body {
+  min-width: 0;
+}
+
+/* ---- hero (00) ---------------------------------------------------------- */
+
+.hero {
+  padding-block: var(--s7) var(--s6);
+}
+
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  margin-bottom: var(--s4);
+}
+
 .hero h1 {
-  font-size: clamp(2.5rem, 9vw, 4rem);
+  font-size: clamp(2.75rem, 9vw, 5rem);
   font-weight: 600;
-  letter-spacing: -0.035em;
-  line-height: 1.04;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
 }
 
-.hero .role {
-  font-family: var(--font-mono);
-  font-size: 1rem;
-  color: var(--text-muted);
-  margin-top: 0.75rem;
+.hero-role {
+  position: relative;
+  display: inline-block;
+  margin-top: var(--s3);
+  font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+  font-weight: 500;
+  color: var(--ink);
 }
 
-.hero .tagline {
-  margin-top: 1.75rem;
+.hero-underline {
+  position: absolute;
+  left: -4px;
+  bottom: -0.55rem;
+  color: var(--accent);
+  pointer-events: none;
+}
+
+.hero-tagline {
+  margin-top: var(--s4);
   max-width: 34rem;
-  font-size: 1.05rem;
-  color: var(--text-muted);
-  white-space: pre-line;
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  color: var(--ink-2);
 }
 
-@media (min-width: 768px) {
-  .container {
-    gap: 6rem;
-    padding: 4rem 1.5rem 5rem;
+@media (max-width: 767px) {
+  .shell {
+    padding-inline: var(--s2);
   }
 
-  .hero .tagline {
-    font-size: 1.15rem;
+  .section {
+    grid-template-columns: 1fr;
+    gap: var(--s3);
+    padding-block: var(--s5);
+  }
+
+  .section-head {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--s2);
+    position: static;
+  }
+
+  .section-head .section-mark {
+    margin-top: 0;
+    margin-left: auto;
+  }
+
+  .hero {
+    padding-block: var(--s5) var(--s4);
   }
 }

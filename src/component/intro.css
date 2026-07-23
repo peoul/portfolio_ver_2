@@ -1,0 +1,154 @@
+/* Welcome screen — a TE "boot" panel that wipes away to reveal the portfolio.
+   Rigid chrome; the only loose mark is the doodle underline. */
+
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: var(--s3);
+  padding: var(--s3);
+  background: var(--bg);
+  will-change: transform;
+  /* CSS drives the exit so the overlay clears even without hydration */
+  animation: intro-out 0.6s cubic-bezier(0.7, 0, 0.2, 1) 2.65s forwards;
+}
+
+@keyframes intro-out {
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+/* ---- top / bottom chrome ---- */
+
+.intro-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: var(--s2);
+  border-bottom: var(--hair) solid var(--line);
+}
+
+.intro-bottom {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--s2);
+  padding-top: var(--s2);
+  border-top: var(--hair) solid var(--line);
+}
+
+.intro-track {
+  position: relative;
+  height: var(--hair);
+  background: var(--line);
+}
+
+.intro-bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  background: var(--accent);
+  animation: intro-fill 2.4s ease-out forwards;
+}
+
+@keyframes intro-fill {
+  to {
+    width: 100%;
+  }
+}
+
+/* counter ticking 0 → 100, no JS required */
+@property --intro-count {
+  syntax: '<integer>';
+  initial-value: 0;
+  inherits: true;
+}
+
+.intro-count {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-feature-settings: 'tnum' 1;
+  letter-spacing: 0.02em;
+  color: var(--ink-3);
+  --intro-count: 0;
+  animation: intro-tick 2.4s ease-out forwards;
+}
+
+.intro-count::after {
+  counter-reset: n var(--intro-count);
+  content: counter(n) "%";
+}
+
+@keyframes intro-tick {
+  to {
+    --intro-count: 100;
+  }
+}
+
+/* ---- centre ---- */
+
+.intro-center {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--s2);
+}
+
+.intro-kicker {
+  animation: intro-rise 0.5s ease-out both;
+}
+
+.intro-word {
+  position: relative;
+  display: inline-block;
+  font-size: clamp(3rem, 12vw, 6rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--ink);
+  animation: intro-rise 0.55s ease-out 0.06s both;
+}
+
+.intro-underline {
+  position: absolute;
+  left: -4px;
+  bottom: -0.5rem;
+  color: var(--accent);
+  pointer-events: none;
+}
+
+.intro-sub {
+  font-size: clamp(0.9375rem, 2.5vw, 1.125rem);
+  color: var(--ink-2);
+  animation: intro-rise 0.55s ease-out 0.12s both;
+}
+
+@keyframes intro-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .intro {
+    padding: var(--s4);
+  }
+}
+
+/* No intro at all when motion is reduced. */
+@media (prefers-reduced-motion: reduce) {
+  .intro {
+    display: none;
+  }
+}

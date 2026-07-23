@@ -1,0 +1,43 @@
+/* The loose layer. Only these marks animate; the rigid grid never does. */
+
+.doodle {
+  display: block;
+  overflow: visible; /* overshoot corners can spill the box — that's the point */
+}
+
+.doodle path {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 100;
+}
+
+/* Fully drawn: SSR/first paint, no-JS, and reduced motion. */
+.doodle--static path {
+  stroke-dashoffset: 0;
+}
+
+/* Armed but not yet in view: hidden, ready to draw. */
+.doodle--armed path {
+  stroke-dashoffset: 100;
+}
+
+/* Scrolled into view: draw on. */
+.doodle--in path {
+  stroke-dashoffset: 100;
+  animation: doodle-draw 460ms ease-out forwards;
+}
+
+@keyframes doodle-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .doodle path {
+    stroke-dashoffset: 0 !important;
+    animation: none !important;
+  }
+}

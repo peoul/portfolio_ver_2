@@ -12,13 +12,38 @@
   flex-direction: column;
 }
 
-/* rigid row: [doodle arrow] [title] [status] [tags] */
+/* Index table: [no.] [project + tags] [type] [year] [status] [arrow].
+   The header row and every work row share these columns. Without any
+   years the year cells are display:none, so they drop out of the grid. */
+.work-index {
+  --work-cols: 2rem minmax(0, 1fr) 8.5rem 4.75rem 1.125rem;
+}
+
+.work-index.has-years {
+  --work-cols: 2rem minmax(0, 1fr) 8.5rem 3rem 4.75rem 1.125rem;
+}
+
+.work-index:not(.has-years) .work-year {
+  display: none;
+}
+
+.work-head,
 .work-item {
   display: grid;
-  grid-template-columns: 1.25rem 1fr auto;
-  align-items: baseline;
+  grid-template-columns: var(--work-cols);
   column-gap: var(--s2);
-  row-gap: 0.125rem;
+}
+
+.work-head {
+  padding-bottom: var(--s1);
+  margin-bottom: var(--s3);
+  border-bottom: var(--hair) solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+}
+
+.work-item {
+  align-items: baseline;
   width: 100%;
   padding: var(--s2) 0;
   background: none;
@@ -34,6 +59,54 @@
   border-top: 0;
 }
 
+.work-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  min-width: 0;
+}
+
+.work-title {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  transition: color 0.15s ease;
+}
+
+/* not shipped yet — recedes until hovered */
+.work-item.is-wip .work-title {
+  color: var(--ink-3);
+}
+
+.work-item:hover .work-title {
+  color: var(--accent);
+}
+
+.work-tags {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--ink-3);
+  letter-spacing: 0.01em;
+}
+
+.work-meta,
+.work-year {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--ink-2);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.work-year {
+  font-feature-settings: 'tnum' 1;
+}
+
+.work-status {
+  display: flex;
+}
+
 .work-arrow {
   width: 1.125rem;
   height: 1.125rem;
@@ -45,25 +118,6 @@
 .work-item:hover .work-arrow {
   color: var(--accent);
   transform: translateX(2px);
-}
-
-.work-title {
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  color: var(--ink);
-}
-
-.work-item:hover .work-title {
-  color: var(--accent);
-}
-
-.work-tags {
-  grid-column: 2;
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  color: var(--ink-3);
-  letter-spacing: 0.01em;
 }
 
 /* neutral status / meta badges — one accent rule keeps these monochrome */
@@ -80,11 +134,6 @@
   letter-spacing: 0.06em;
   color: var(--ink-2);
   white-space: nowrap;
-}
-
-.status {
-  justify-self: end;
-  align-self: center;
 }
 
 /* ---- modal ---- */
@@ -229,12 +278,36 @@
 }
 
 @media (max-width: 767px) {
-  .work-item {
-    grid-template-columns: 1.25rem 1fr;
+  /* no., project (+ type · status below), arrow */
+  .work-index,
+  .work-index.has-years {
+    --work-cols: 1.75rem minmax(0, 1fr) 1.125rem;
   }
 
-  .status {
-    justify-self: start;
+  .work-head {
+    display: none;
+  }
+
+  .work-item {
+    row-gap: var(--s1);
+  }
+
+  .work-meta,
+  .work-year {
+    display: none;
+  }
+
+  .work-status {
     grid-column: 2;
+    grid-row: 2;
+  }
+
+  .work-status:empty {
+    display: none;
+  }
+
+  .work-arrow {
+    grid-column: 3;
+    grid-row: 1;
   }
 }

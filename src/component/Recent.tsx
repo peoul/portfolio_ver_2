@@ -11,6 +11,7 @@ interface Project {
   tags: string[];
   status?: string;
   meta?: string;
+  year?: string;
   link?: string;
   github?: string;
   logo?: string;
@@ -105,18 +106,28 @@ function Modal({ project, onClose }: { project: Project; onClose: () => void }) 
   );
 }
 
-function WorkRow({ project }: { project: Project }) {
+function WorkRow({ project, index }: { project: Project; index: number }) {
   const [open, setOpen] = useState(false);
 
   return (
     <>
-      <button className="work-item" onClick={() => setOpen(true)}>
-        <DoodleArrow className="work-arrow" />
-        <span className="work-title">{project.title}</span>
-        {project.status && <span className="status">{project.status}</span>}
-        <span className="work-tags">
-          {project.tags.slice(0, 3).join(" · ")}
+      <button
+        className={`work-item${project.status === "WIP" ? " is-wip" : ""}`}
+        onClick={() => setOpen(true)}
+      >
+        <span className="idx work-idx">{String(index).padStart(2, "0")}</span>
+        <span className="work-main">
+          <span className="work-title">{project.title}</span>
+          <span className="work-tags">
+            {project.tags.slice(0, 3).join(" · ")}
+          </span>
         </span>
+        <span className="work-meta">{project.meta}</span>
+        <span className="work-year">{project.year}</span>
+        <span className="work-status">
+          {project.status && <span className="status">{project.status}</span>}
+        </span>
+        <DoodleArrow className="work-arrow" />
       </button>
 
       {/*
@@ -152,24 +163,55 @@ function WorkRow({ project }: { project: Project }) {
   );
 }
 
-function WorkGroup({ label, projects }: { label: string; projects: Project[] }) {
+const STUDIO = work.studio as Project[];
+const PERSONAL = work.personal as Project[];
+// The year column only appears once at least one project has a year.
+const HAS_YEARS = [...STUDIO, ...PERSONAL].some((p) => p.year);
+
+function WorkGroup({
+  label,
+  projects,
+  start,
+}: {
+  label: string;
+  projects: Project[];
+  start: number;
+}) {
   return (
     <div className="work-group">
       <p className="label work-group-label">{label}</p>
       <div className="work-list">
         {projects.map((project, idx) => (
-          <WorkRow key={idx} project={project} />
+          <WorkRow key={idx} project={project} index={start + idx} />
         ))}
       </div>
     </div>
   );
 }
 
+/**
+ * Typographic index (no.  project  type  year  status) — every fact is on
+ * the row; the modal only adds the long description and links.
+ */
 function RecentProject() {
   return (
     <Section index="03" label="Selected Work" id="work">
-      <WorkGroup label="studio/" projects={work.studio as Project[]} />
-      <WorkGroup label="personal/" projects={work.personal as Project[]} />
+      <div className={`work-index${HAS_YEARS ? " has-years" : ""}`}>
+        <div className="work-head label" aria-hidden="true">
+          <span>No.</span>
+          <span>Project</span>
+          <span>Type</span>
+          <span className="work-year">Year</span>
+          <span>Status</span>
+          <span />
+        </div>
+        <WorkGroup label="studio/" projects={STUDIO} start={1} />
+        <WorkGroup
+          label="personal/"
+          projects={PERSONAL}
+          start={STUDIO.length + 1}
+        />
+      </div>
     </Section>
   );
 }

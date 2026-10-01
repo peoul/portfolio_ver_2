@@ -76,18 +76,21 @@
     "personal": [
       {
         "title": "Portfolio",
+        "meta": "Personal Site",
         "description": "Built a responsive personal portfolio website with a terminal-inspired design and smooth user experience.\n\n• Dark/light mode toggle with custom CSS variables\n• Terminal-style interface with typing animations\n• Modal-based project showcase with mobile optimization\n• Responsive design from mobile-first to desktop",
         "tags": ["React", "TypeScript", "CSS", "Personal"],
         "github": "https://github.com/peoul/portfolio_ver_2"
       },
       {
         "title": "Slow Typer",
+        "meta": "Side Project",
         "description": "Built a minimalist typing speed test with real-time WPM tracking and visual feedback.\n\n• Performance analytics dashboard\n• Responsive design for distraction-free practice\n• Real-time accuracy measurement",
         "tags": ["React", "TypeScript", "CSS", "Personal"],
         "github": "https://github.com/peoul/slow-typer"
       },
       {
         "title": "Clue-Less",
+        "meta": "School Project",
         "description": "Implemented a multiplayer web version of the classic Clue board game with real-time gameplay.\n\n• Lobby system with character selection\n• Turn-based mechanics and game state sync\n• Real-time multiplayer functionality\n\nTeam project for Foundations of Software at Johns Hopkins University.\nCollaborated with Amanda Lowery (PM), Linda Nguyen (Lead Dev), and Deon Odom (QA).",
         "tags": ["Python", "Flask", "JavaScript", "School"],
         "github": "https://github.com/lamlinda/Clue-less"
@@ -95,6 +98,7 @@
     ]
   },
   "contact": {
+    "headline": "Building something? Let's talk.",
     "email": "lyhongpeou.lp@gmail.com",
     "linkedin": "https://www.linkedin.com/in/lyhong-peou/",
     "github": "https://github.com/peoul"

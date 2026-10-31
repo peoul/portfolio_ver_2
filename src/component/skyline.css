@@ -1,0 +1,233 @@
+@property --spin {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+.skyline {
+  --sk-sun: var(--pink);
+  --sk-far: var(--blue);
+  --sk-trad: var(--red);
+  --sk-gold: #f0a500;
+  --sk-hill: var(--teal);
+  --sk-near: #1e1b38;
+  --sk-win: var(--cream);
+  --sk-off: var(--cream);
+  --sk-wire: #1e1b38;
+  --sk-lane: var(--cream);
+  width: 100%;
+  height: auto;
+}
+
+[data-theme="dark"] .skyline {
+  --sk-sun: var(--cream);
+  --sk-far: #2b357f;
+  --sk-trad: #7d1f33;
+  --sk-gold: #b8841c;
+  --sk-hill: #0f4a45;
+  --sk-near: #0b0a1a;
+  --sk-win: var(--yellow);
+  --sk-off: #24213f;
+  --sk-wire: #5a5480;
+  --sk-lane: #5a5480;
+}
+
+/*
+ * The sun is printed last, over the landmarks, as a multiply overprint —
+ * gold under pink goes orange, like a real second riso pass. (Blending each
+ * ink shape instead would darken every place two roof layers overlap.) At
+ * night the moon sits behind the city instead.
+ */
+.sk-sun {
+  fill: var(--sk-sun);
+  mix-blend-mode: multiply;
+}
+
+.sk-moon {
+  display: none;
+  fill: var(--sk-sun);
+  filter: drop-shadow(0 0 24px rgba(244, 234, 214, 0.45));
+}
+
+[data-theme="dark"] .sk-sun {
+  display: none;
+}
+
+[data-theme="dark"] .sk-moon {
+  display: inline;
+}
+
+.sk-gold {
+  fill: var(--sk-gold);
+}
+
+/* the palace is floodlit at night */
+[data-theme="dark"] .sk-palace {
+  filter: drop-shadow(0 0 12px rgba(255, 198, 26, 0.45));
+}
+
+/* halftone shading and knocked-out cream linework */
+#sk-dots circle {
+  fill: #1e1b38;
+  opacity: 0.4;
+}
+
+[data-theme="dark"] #sk-dots circle {
+  fill: #000;
+  opacity: 0.35;
+}
+
+.sk-shade {
+  fill: url(#sk-dots);
+}
+
+.sk-detail {
+  fill: none;
+  stroke: var(--cream);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  opacity: 0.6;
+}
+
+.sk-detail--soft {
+  opacity: 0.28;
+}
+
+[data-theme="dark"] .sk-detail {
+  opacity: 0.35;
+}
+
+[data-theme="dark"] .sk-detail--soft {
+  opacity: 0.15;
+}
+
+.sk-gold-line {
+  fill: none;
+  stroke: var(--sk-gold);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.sk-hill {
+  fill: var(--sk-hill);
+}
+
+.sk-arch {
+  fill: var(--sk-near);
+  opacity: 0.45;
+}
+
+[data-theme="dark"] .sk-arch {
+  fill: var(--yellow);
+  opacity: 0.8;
+}
+
+
+.sk-far {
+  fill: var(--sk-far);
+}
+
+.sk-crane {
+  fill: none;
+  stroke: var(--sk-far);
+  stroke-width: 3;
+}
+
+.sk-trad {
+  fill: var(--sk-trad);
+}
+
+.sk-trad-line {
+  fill: none;
+  stroke: var(--sk-trad);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.sk-near,
+.sk-palm circle,
+.sk-road {
+  fill: var(--sk-near);
+}
+
+.sk-trunk,
+.sk-frond {
+  fill: none;
+  stroke: var(--sk-near);
+  stroke-linecap: round;
+}
+
+.sk-trunk {
+  stroke-width: 5;
+}
+
+.sk-frond {
+  stroke-width: 2.6;
+}
+
+.sk-win {
+  fill: var(--sk-win);
+  opacity: 0.85;
+}
+
+.sk-win--off {
+  fill: var(--sk-off);
+}
+
+.sk-balcony {
+  stroke: var(--sk-win);
+  stroke-width: 1.5;
+  opacity: 0.35;
+}
+
+.sk-sign--0 { fill: var(--red); }
+.sk-sign--1 { fill: var(--yellow); }
+.sk-sign--2 { fill: var(--teal); }
+.sk-sign--3 { fill: var(--pink); }
+
+[data-theme="dark"] .sk-sign {
+  filter: drop-shadow(0 0 5px currentColor);
+}
+
+[data-theme="dark"] .sk-sign--0 { color: var(--red); }
+[data-theme="dark"] .sk-sign--1 { color: var(--yellow); }
+[data-theme="dark"] .sk-sign--2 { color: var(--teal); }
+[data-theme="dark"] .sk-sign--3 { color: var(--pink); }
+
+.sk-wire {
+  fill: none;
+  stroke: var(--sk-wire);
+  stroke-width: 1.5;
+}
+
+.sk-flag-blue { fill: #032ea1; }
+.sk-flag-red { fill: #e00025; }
+.sk-flag-white { fill: #fff; }
+
+.sk-wire--bold {
+  stroke: var(--sk-near);
+  stroke-width: 2.2;
+}
+
+.sk-lane {
+  stroke: var(--sk-lane);
+  stroke-width: 2;
+  stroke-dasharray: 26 18;
+}
+
+/* The tuk-tuk pulls up and parks outside the palace (tuktuk.css gives it
+   cream line work here so it reads on the dark road). */
+.sk-tt {
+  animation: tt-arrive 2.6s cubic-bezier(0.2, 0.7, 0.15, 1) 0.3s both;
+}
+
+@keyframes tt-arrive {
+  from {
+    transform: translateX(-1100px);
+    --spin: -1440deg;
+  }
+  to {
+    transform: translateX(0);
+    --spin: 0deg;
+  }
+}

@@ -1,0 +1,101 @@
+/*
+ * --tt-stroke: line work (posts, fork, spokes) — ink by day, cream at night.
+ * --tt-edge:   outline on the solid dark parts so they don't vanish on a
+ *              dark background.
+ */
+.tt {
+  --tt-stroke: #1e1b38;
+  --tt-edge: transparent;
+  --tt-tyre: #1e1b38;
+}
+
+/* on the dark asphalt in the hero skyline, too */
+[data-theme="dark"] .tt,
+.sk-tt .tt {
+  --tt-stroke: var(--cream);
+  --tt-edge: var(--cream);
+  --tt-tyre: #c9c2da;
+}
+
+.tt-roof {
+  fill: var(--cream);
+  stroke: var(--tt-stroke);
+  stroke-width: 1.2;
+}
+
+.tt-red {
+  fill: var(--red);
+}
+
+.tt-redline {
+  fill: none;
+  stroke: var(--red);
+  stroke-linecap: round;
+}
+
+.tt-pink {
+  fill: var(--pink);
+}
+
+.tt-cord {
+  fill: none;
+  stroke: var(--yellow);
+  stroke-width: 1.2;
+}
+
+.tt-dark {
+  fill: #1e1b38;
+  stroke: var(--tt-edge);
+  stroke-width: 0.9;
+}
+
+.tt-line {
+  fill: none;
+  stroke: var(--tt-stroke);
+  stroke-linecap: round;
+}
+
+.tt-exhaust {
+  fill: none;
+  stroke: #c9c2da;
+  stroke-width: 3.2;
+  stroke-linecap: round;
+}
+
+.tt-engine {
+  fill: #8a84a0;
+}
+
+.tt-rider-limb {
+  fill: none;
+  stroke: #1e1b38;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+[data-theme="dark"] .tt-rider-limb,
+.sk-tt .tt-rider-limb {
+  stroke: #3a3560;
+}
+
+.tt-tyre {
+  fill: none;
+  stroke: var(--tt-tyre);
+  stroke-width: 3.2;
+}
+
+.tt-spoke {
+  fill: none;
+  stroke: var(--tt-stroke);
+  stroke-width: 0.8;
+}
+
+.tt-hub {
+  fill: var(--tt-stroke);
+}
+
+.tt-wheel {
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: rotate(var(--spin, 0deg));
+}

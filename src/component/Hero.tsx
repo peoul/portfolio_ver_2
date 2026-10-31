@@ -1,29 +1,58 @@
+import "./hero.css";
 import { hero } from "../assets/data/portfolio.json";
-import { DoodleUnderline } from "./Doodle";
-import { useWidth } from "./useWidth";
+import Skyline from "./Skyline";
 
-function HeroSection() {
-  const { ref, width } = useWidth<HTMLSpanElement>();
+/**
+ * Opening shot: a hand-painted Phnom Penh shop sign — Khmer name in Moul
+ * up top, English underneath, the way every storefront in the city reads.
+ */
+export default function Hero() {
+  const lines = hero.tagline;
+  const last = lines[lines.length - 1];
 
   return (
-    <section className="hero">
-      <div className="hero-eyebrow">
-        <span className="idx">00</span>
-        <span className="label">Portfolio — 2026</span>
+    <section className="hero" id="top" aria-labelledby="hero-name">
+      <p className="hero-greet">
+        <span className="kh-sign" lang="km">
+          ជំរាបសួរ
+        </span>
+        <span className="hero-greet-en">Hello, come on in.</span>
+      </p>
+
+      <div className="sign-hang">
+        <div className="sign">
+          <p className="sign-kh kh-sign" lang="km">
+            {hero.kh}
+          </p>
+          <h1 className="sign-en" id="hero-name">
+            {hero.name}
+          </h1>
+          <p className="sign-sub">
+            <span>{hero.title}</span> <span aria-hidden="true">·</span> <span>{hero.role}</span>
+          </p>
+          <p className="sign-est">
+            est. {hero.origin} <span aria-hidden="true">→</span> now in the {hero.now}
+          </p>
+          <span className="sign-open" aria-hidden="true">
+            <span lang="km">បើក</span> Open
+          </span>
+        </div>
       </div>
 
-      <h1>{hero.name}</h1>
+      <p className="hero-tagline">
+        {lines.slice(0, -1).map((line) => (
+          <span key={line}>{line} </span>
+        ))}
+        <span className="hero-tagline-next riso">{last}</span>
+      </p>
 
-      <span className="hero-role" ref={ref}>
-        {hero.title}
-        {width > 0 && (
-          <DoodleUnderline width={Math.round(width) + 8} className="hero-underline" />
-        )}
-      </span>
+      <a className="hero-cue" href="#home">
+        Hop in, scroll to ride <span aria-hidden="true">↓</span>
+      </a>
 
-      <p className="hero-tagline">{hero.tagline}</p>
+      <div className="hero-street">
+        <Skyline className="hero-skyline" />
+      </div>
     </section>
   );
 }
-
-export default HeroSection;

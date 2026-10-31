@@ -1,0 +1,155 @@
+.toolbox {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: var(--s5);
+  align-items: start;
+}
+
+.crate {
+  display: grid;
+  gap: var(--s4);
+  padding: var(--s4);
+  border: 3px solid var(--ink);
+  border-radius: var(--radius);
+  background:
+    repeating-linear-gradient(0deg, transparent 0 46px, var(--soft) 46px 48px),
+    var(--paper-2);
+}
+
+.drawer-label {
+  margin-bottom: var(--s2);
+}
+
+.stickers {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.sticker {
+  --bg: var(--yellow);
+  --fg: #1e1b38;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border: 2px solid #1e1b38;
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--fg);
+  font-weight: 700;
+  font-size: 0.92rem;
+  box-shadow: 3px 3px 0 #1e1b38;
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform 0.2s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+.sticker:hover {
+  transform: rotate(0deg) scale(1.08);
+}
+
+.sticker--1 { --bg: var(--pink); }
+.sticker--2 { --bg: var(--teal); }
+.sticker--3 { --bg: var(--blue); --fg: var(--cream); }
+.sticker--4 { --bg: var(--red); --fg: var(--cream); }
+
+[data-theme="dark"] .sticker {
+  border-color: var(--cream);
+  box-shadow: 3px 3px 0 var(--cream);
+}
+
+.sticker svg {
+  width: 1.05em;
+  height: 1.05em;
+}
+
+/* ---- off-hours ---- */
+
+.offhours {
+  display: grid;
+  gap: var(--s3);
+}
+
+.offhours-list {
+  list-style: none;
+  display: grid;
+  gap: var(--s2);
+}
+
+.offhours-list li {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+}
+
+.offhours-list span {
+  display: grid;
+}
+
+.offhours-list strong {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+.offhours-list small {
+  font-size: 0.9rem;
+  color: var(--ink-3);
+}
+
+.offhours-icon {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  padding: 9px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* résumé as a tear-off flyer */
+.resume {
+  display: grid;
+  gap: 2px;
+  margin-top: var(--s2);
+  padding: var(--s3);
+  border-radius: 4px;
+  background: var(--blue);
+  color: var(--cream);
+  text-decoration: none;
+  box-shadow: 6px 6px 0 var(--pink);
+  transform: rotate(-1.5deg);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.resume:hover {
+  transform: rotate(0deg) translate(-2px, -2px);
+  box-shadow: 9px 9px 0 var(--pink);
+}
+
+.resume-kicker,
+.resume-meta {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.resume-title {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1.05;
+}
+
+@media (max-width: 860px) {
+  .toolbox {
+    grid-template-columns: 1fr;
+  }
+
+  .crate {
+    padding: var(--s3);
+  }
+}

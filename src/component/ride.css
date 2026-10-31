@@ -1,0 +1,142 @@
+.ride {
+  --tt-w: 76px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  height: calc(var(--ride-h) + env(safe-area-inset-bottom, 0px));
+  padding: 0 var(--gutter) env(safe-area-inset-bottom, 0px);
+  background: var(--paper);
+  border-top: 3px solid var(--ink);
+  transition: background-color 0.4s ease;
+}
+
+.ride-track {
+  position: relative;
+  max-width: var(--max);
+  height: var(--ride-h);
+  margin-inline: auto;
+}
+
+.ride-road {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  border-top: 2px dashed var(--soft);
+}
+
+/* ---- stops ---- */
+
+.ride-stop {
+  position: absolute;
+  top: 50%;
+  /* line the stop up with the tuk-tuk's centre at the same progress */
+  left: calc(var(--at, 0) * (100% - var(--tt-w)) + var(--tt-w) / 2);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transform: translate(-13px, -50%);
+  opacity: 0;
+  animation: stop-in 0.3s ease 0.2s forwards;
+}
+
+.ride-stop:not([style]) {
+  animation: none;
+}
+
+@keyframes stop-in {
+  to { opacity: 1; }
+}
+
+.ride-num {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: var(--cream);
+  font-size: 0.95rem;
+  line-height: 1;
+  padding-top: 3px;
+  box-shadow: 0 0 0 2px var(--paper);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.ride-stop.is-passed .ride-num {
+  background: var(--ink-3);
+}
+
+.ride-stop.is-here .ride-num {
+  background: var(--red);
+  transform: scale(1.18);
+}
+
+.ride-stop:hover .ride-num {
+  transform: scale(1.18);
+}
+
+.ride-label {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 4px);
+  translate: -50% 0;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.ride-stop:hover .ride-label,
+.ride-stop:focus-visible .ride-label,
+.ride-stop.is-here .ride-label {
+  opacity: 1;
+}
+
+/* ---- the tuk-tuk ---- */
+
+.ride-tt {
+  position: absolute;
+  bottom: 4px;
+  left: calc(var(--p, 0) * (100% - var(--tt-w)));
+  width: var(--tt-w);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ride-tt svg {
+  transition: transform 0.35s ease;
+}
+
+.ride[data-dir="back"] .ride-tt svg {
+  transform: scaleX(-1);
+}
+
+/* a little engine rumble */
+.ride-tt svg .tt {
+  animation: rumble 0.5s steps(2) infinite;
+}
+
+@keyframes rumble {
+  50% { transform: translateY(-0.6px); }
+}
+
+@media (max-width: 640px) {
+  .ride {
+    --tt-w: 60px;
+  }
+
+  .ride-label {
+    display: none;
+  }
+}

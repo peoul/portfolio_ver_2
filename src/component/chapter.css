@@ -1,0 +1,115 @@
+.chapter {
+  position: relative;
+  padding-block: var(--s7);
+  padding-inline: var(--gutter);
+  /* land below the top of the viewport when a stop is clicked */
+  scroll-margin-top: var(--s2);
+}
+
+/* the road between stops: a dashed lane down the page */
+.chapter + .chapter::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0;
+  height: var(--s6);
+  border-left: 3px dashed var(--soft);
+  transform: translate(-50%, -50%);
+}
+
+.chapter-inner {
+  max-width: var(--max);
+  margin-inline: auto;
+}
+
+.chapter-head {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s3);
+  margin-bottom: var(--s5);
+}
+
+.stop-sign {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: var(--cream);
+  box-shadow:
+    inset 0 0 0 4px var(--blue),
+    inset 0 0 0 6px var(--cream),
+    5px 5px 0 var(--ink);
+  transform: rotate(-6deg);
+}
+
+.stop-num {
+  font-size: 2.1rem;
+  line-height: 1;
+  margin-top: 10px;
+}
+
+.stop-word {
+  margin-top: -14px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.chapter-kh {
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  line-height: 1.6;
+  color: var(--red);
+}
+
+[data-theme="dark"] .chapter-kh {
+  color: var(--yellow);
+}
+
+.chapter-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 6.5vw, 4.6rem);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.chapter-place {
+  margin-top: var(--s2);
+}
+
+.chapter-place::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: var(--red);
+  vertical-align: 1px;
+}
+
+@media (max-width: 640px) {
+  .chapter {
+    padding-block: var(--s6);
+  }
+
+  .chapter-head {
+    flex-direction: column;
+    gap: var(--s2);
+  }
+
+  .stop-sign {
+    width: 62px;
+    height: 62px;
+  }
+
+  .stop-num {
+    font-size: 1.7rem;
+  }
+}

@@ -1,0 +1,328 @@
+.story-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: var(--s6);
+  align-items: start;
+}
+
+.story-text {
+  display: grid;
+  gap: var(--s3);
+  max-width: 34em;
+  font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+  line-height: 1.65;
+  color: var(--ink-2);
+}
+
+.story-text p:first-child {
+  color: var(--ink);
+}
+
+.story-side {
+  display: grid;
+  gap: var(--s4);
+  justify-items: start;
+}
+
+/* ---- postcard ---- */
+
+.postcard {
+  position: relative;
+  width: min(100%, 420px);
+  aspect-ratio: 3 / 2;
+  padding: var(--s3);
+  background: #fffaf0;
+  color: #1e1b38;
+  border: 2px solid #1e1b38;
+  border-radius: 4px;
+  box-shadow: 8px 8px 0 var(--teal);
+  transform: rotate(2deg);
+  overflow: hidden;
+}
+
+/* halftone sun in the corner */
+.postcard::before {
+  content: "";
+  position: absolute;
+  right: -40px;
+  bottom: -60px;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--pink) 1.6px, transparent 2px) 0 0 / 8px 8px;
+  opacity: 0.6;
+}
+
+.postcard-greet {
+  position: relative;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.postcard-city {
+  position: relative;
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--blue);
+  /* stack "Phnom / Penh" clear of the stamp */
+  max-width: 6ch;
+}
+
+.postcard-kh {
+  position: relative;
+  margin-top: var(--s1);
+  font-size: 1.4rem;
+  color: var(--red);
+}
+
+.postcard-stamp {
+  position: absolute;
+  top: var(--s2);
+  right: var(--s2);
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 86px;
+  padding: 6px;
+  background: var(--red);
+  color: var(--yellow);
+  /* perforated edge */
+  outline: 4px dotted #fffaf0;
+  outline-offset: -2px;
+}
+
+.postcard-stamp-value {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.postcard-stamp-country {
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.postcard-postmark {
+  position: absolute;
+  top: 54px;
+  right: 58px;
+  display: grid;
+  place-items: center;
+  width: 78px;
+  height: 78px;
+  border: 2px solid rgba(30, 27, 56, 0.55);
+  border-radius: 50%;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(30, 27, 56, 0.6);
+  transform: rotate(-14deg);
+  align-content: center;
+}
+
+/* ---- passport stamps ---- */
+
+.stamps {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s3);
+}
+
+.stamp {
+  display: grid;
+  gap: 2px;
+  padding: var(--s2) var(--s3);
+  border: 3px double currentColor;
+  border-radius: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.9;
+}
+
+.stamp--0 {
+  color: var(--blue);
+  transform: rotate(-4deg);
+}
+
+.stamp--1 {
+  color: var(--red);
+  transform: rotate(3deg);
+}
+
+[data-theme="dark"] .stamp--0 {
+  color: #8ea2ff;
+}
+
+[data-theme="dark"] .stamp--1 {
+  color: #ff7a82;
+}
+
+.stamp-school {
+  font-size: 0.85rem;
+}
+
+.stamp-degree {
+  font-size: 0.65rem;
+  font-weight: 600;
+}
+
+/* ---- tickets ---- */
+
+.ticket {
+  --notch: 10px;
+  position: relative;
+  width: min(100%, 440px);
+  padding: var(--s3);
+  background: var(--yellow);
+  color: #1e1b38;
+  border-radius: 6px;
+  /* notches punched in either side */
+  -webkit-mask:
+    radial-gradient(circle at 0 58px, transparent var(--notch), #000 calc(var(--notch) + 0.5px)) left / 51% 100% no-repeat,
+    radial-gradient(circle at 100% 58px, transparent var(--notch), #000 calc(var(--notch) + 0.5px)) right / 51% 100% no-repeat;
+  mask:
+    radial-gradient(circle at 0 58px, transparent var(--notch), #000 calc(var(--notch) + 0.5px)) left / 51% 100% no-repeat,
+    radial-gradient(circle at 100% 58px, transparent var(--notch), #000 calc(var(--notch) + 0.5px)) right / 51% 100% no-repeat;
+}
+
+.ticket:nth-of-type(even) {
+  background: var(--teal);
+}
+
+.ticket-top {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s2);
+  padding-bottom: var(--s2);
+  margin-bottom: var(--s2);
+  border-bottom: 2px dashed rgba(30, 27, 56, 0.45);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.ticket-company {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.ticket-role {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.ticket-text,
+.ticket-list {
+  margin-top: var(--s2);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.ticket-list {
+  padding-left: 1.1em;
+  display: grid;
+  gap: 6px;
+}
+
+.ticket-link {
+  display: inline-block;
+  margin-top: var(--s2);
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: #1e1b38;
+  color: var(--cream);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.ticket-link:hover {
+  background: var(--red);
+}
+
+/* ---- the fork in the road ---- */
+
+.fork {
+  position: relative;
+  display: grid;
+  gap: var(--s2);
+  width: min(100%, 420px);
+  padding-block: var(--s2) var(--s5);
+}
+
+.fork-post {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 10px;
+  background: var(--ink);
+  border-radius: 3px;
+  transform: translateX(-50%);
+  z-index: -1;
+}
+
+.fork-arrow {
+  display: grid;
+  padding: 12px 40px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.25rem;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.fork-arrow small {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.fork-arrow--left {
+  justify-self: start;
+  width: 82%;
+  background: var(--paper-2);
+  color: var(--ink-3);
+  clip-path: polygon(0 50%, 26px 0, 100% 0, 100% 100%, 26px 100%);
+  transform: rotate(-4deg);
+}
+
+.fork-arrow--left s {
+  text-decoration-thickness: 3px;
+  text-decoration-color: var(--red);
+}
+
+.fork-arrow--right {
+  justify-self: end;
+  width: 82%;
+  background: var(--pink);
+  color: #1e1b38;
+  text-align: right;
+  clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 50%, calc(100% - 26px) 100%, 0 100%);
+  transform: rotate(3deg);
+}
+
+[data-theme="dark"] .fork-arrow--right {
+  filter: drop-shadow(0 0 14px rgba(255, 79, 163, 0.6));
+}
+
+@media (max-width: 860px) {
+  .story-grid {
+    grid-template-columns: 1fr;
+    gap: var(--s5);
+  }
+}

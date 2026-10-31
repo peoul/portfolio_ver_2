@@ -1,0 +1,229 @@
+.hero {
+  position: relative;
+  min-height: calc(100svh - var(--ride-h) - var(--topbar-h));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: var(--s3);
+  text-align: center;
+}
+
+.hero-greet {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s2);
+  margin-bottom: clamp(var(--s2), 4vh, var(--s5));
+  padding-inline: var(--gutter);
+  font-size: 0.9rem;
+  color: var(--ink-2);
+}
+
+.hero-greet .kh-sign {
+  font-size: 1.05rem;
+  color: var(--red);
+}
+
+[data-theme="dark"] .hero-greet .kh-sign {
+  color: var(--yellow);
+}
+
+/* ---- the shop sign ---- */
+
+.sign-hang {
+  position: relative;
+  padding-inline: var(--gutter);
+  transform-origin: 50% -60px;
+  animation: sign-sway 7s ease-in-out infinite;
+}
+
+/* wires up to the (imaginary) balcony above */
+.sign-hang::before,
+.sign-hang::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  width: 2px;
+  height: var(--s5);
+  background: var(--ink);
+}
+
+.sign-hang::before {
+  left: calc(var(--gutter) + 18%);
+  transform: rotate(8deg);
+}
+
+.sign-hang::after {
+  right: calc(var(--gutter) + 18%);
+  transform: rotate(-8deg);
+}
+
+@keyframes sign-sway {
+  0%, 100% { transform: rotate(-1.2deg); }
+  50% { transform: rotate(0.8deg); }
+}
+
+.sign {
+  position: relative;
+  padding: clamp(var(--s2), 3vh, var(--s4)) clamp(var(--s3), 5vw, var(--s6));
+  background: var(--red);
+  color: var(--yellow);
+  border-radius: 6px;
+  /* painted double border + a blue print offset */
+  box-shadow:
+    inset 0 0 0 6px var(--red),
+    inset 0 0 0 9px var(--yellow),
+    10px 10px 0 var(--blue);
+}
+
+[data-theme="dark"] .sign {
+  box-shadow:
+    inset 0 0 0 6px var(--red),
+    inset 0 0 0 9px var(--yellow),
+    10px 10px 0 var(--blue),
+    0 0 60px rgba(224, 38, 47, 0.45);
+}
+
+.sign-kh {
+  font-size: clamp(2.6rem, min(10vw, 8vh), 6.5rem);
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+}
+
+[data-theme="dark"] .sign-kh {
+  text-shadow: 0 0 22px rgba(255, 198, 26, 0.55);
+}
+
+.sign-en {
+  margin-top: var(--s1);
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 5vw, 3rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--cream);
+}
+
+.sign-sub {
+  margin-top: var(--s2);
+  text-wrap: balance;
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  font-weight: 600;
+  color: var(--cream);
+}
+
+.sign-sub span {
+  white-space: nowrap;
+}
+
+.sign-est {
+  margin-top: var(--s1);
+  display: inline-block;
+  padding: 2px 12px;
+  border-radius: 999px;
+  background: var(--yellow);
+  color: #1e1b38;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sign-open {
+  position: absolute;
+  top: -14px;
+  right: -12px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--pink);
+  color: #1e1b38;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transform: rotate(8deg);
+  box-shadow: 3px 3px 0 #1e1b38;
+}
+
+[data-theme="dark"] .sign-open {
+  box-shadow: 0 0 18px var(--pink);
+  animation: neon-flicker 4s steps(1) infinite;
+}
+
+@keyframes neon-flicker {
+  0%, 18%, 22%, 62%, 100% { opacity: 1; }
+  20%, 64% { opacity: 0.35; }
+}
+
+/* ---- tagline ---- */
+
+.hero-tagline {
+  max-width: 30ch;
+  margin-top: clamp(var(--s3), 3vh, var(--s6));
+  padding-inline: var(--gutter);
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, min(4.2vw, 4.4vh), 2.6rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.hero-tagline-next {
+  color: var(--blue);
+}
+
+[data-theme="dark"] .hero-tagline-next {
+  color: var(--yellow);
+}
+
+/* ---- street ---- */
+
+.hero-street {
+  position: relative;
+  width: 100%;
+  margin-top: auto;
+  padding-top: var(--s1);
+}
+
+/* Doubled class: beat .skyline { height: auto }. Never shorter than the
+   scene's own aspect (3000×340 ≈ 8.8:1) at full width, or `slice` would
+   crop the landmarks' tops instead of the scene's sides. */
+.skyline.hero-skyline {
+  height: max(clamp(180px, min(30vw, 24vh), 380px), calc(100vw / 8.8));
+}
+
+.hero-cue {
+  margin-top: var(--s2);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink-2);
+}
+
+.hero-cue:hover {
+  color: var(--ink);
+}
+
+@media (max-width: 640px) {
+  .hero-greet {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin-bottom: var(--s4);
+  }
+
+  .sign-open {
+    right: 4px;
+  }
+
+  .sign-hang::before {
+    left: calc(var(--gutter) + 8%);
+  }
+
+  .sign-hang::after {
+    right: calc(var(--gutter) + 8%);
+  }
+}

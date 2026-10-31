@@ -1,10 +1,64 @@
 {
   "hero": {
     "name": "Lyhong Peou",
+    "kh": "ពៅ លីហុង",
     "title": "Full-Stack Developer",
-    "tagline": "Designing, building, and shipping digital products — fast.",
-    "welcome": "Glad you stopped by — take a look around."
+    "role": "Co-founder, AJILE Studio",
+    "origin": "Phnom Penh",
+    "now": "US",
+    "tagline": [
+      "Raised in Phnom Penh.",
+      "Took the long road.",
+      "Now building what's next."
+    ]
   },
+  "story": [
+    {
+      "id": "home",
+      "title": "Where it starts",
+      "place": "Phnom Penh, Cambodia",
+      "paragraphs": [
+        "I grew up in Phnom Penh. Motorbikes four abreast, markets open before sunrise, power lines knotted overhead, and glass towers going up right beside centuries-old pagodas.",
+        "It's a city that keeps rebuilding itself without forgetting where it came from. I think that's where I picked up the habit."
+      ]
+    },
+    {
+      "id": "abroad",
+      "title": "The long way round",
+      "place": "Corvallis, OR → Austin, TX",
+      "paragraphs": [
+        "I left home to study computer science at Oregon State. Between classes I worked the university IT desk, then spent a year building Parchment as a software engineering intern at Captured Sun.",
+        "Then a master's in Information Systems Engineering at Johns Hopkins. Two degrees, a long way from home, and a pretty clear idea of what was supposed to come next."
+      ],
+      "education": [
+        {
+          "school": "Oregon State University",
+          "degree": "BS Computer Science"
+        },
+        {
+          "school": "Johns Hopkins University",
+          "degree": "MS Information Systems Engineering"
+        }
+      ],
+      "roles": [
+        "Oregon State University",
+        "Captured Sun"
+      ]
+    },
+    {
+      "id": "road",
+      "title": "A different road",
+      "place": "US · Remote",
+      "expected": "Big-company job",
+      "paragraphs": [
+        "The expected move was a stable job at a big company. I took the other road and co-founded AJILE Studio with a friend from Oregon State: a small team that designs, builds, and ships digital products end to end, fast, without the agency overhead.",
+        "Smaller team, bigger bets, and every product is ours to get right."
+      ],
+      "roles": [
+        "AJILE Studio"
+      ]
+    }
+  ],
   "experience": [
     {
       "company": "AJILE Studio",
@@ -12,8 +66,8 @@
       "location": "Remote",
       "period": "May 2025 — Present",
       "logo": "/icon.svg",
-      "link": "https://ajile.team/",
-      "blurb": "A small team of engineers that designs, builds, and ships digital products — fast, and without the agency overhead. See what we've shipped under work/ below."
+      "link": "https://ajile.studio/",
+      "blurb": "A small team of engineers that designs, builds, and ships digital products, fast, and without the agency overhead. Everything we've shipped is in the night market below."
     },
     {
       "company": "Captured Sun",
@@ -43,16 +97,27 @@
         "status": "Shipped",
         "meta": "Client Project",
         "description": "Skylab Fitness was running their bookings entirely manual. We built them a full-stack web app where clients can book classes and track their credit balance, while staff manage scheduling and payments from a clean admin interface. The result: less admin overhead, fewer errors, and a smoother experience for everyone.",
-        "tags": ["Next.js", "React", "Convex", "Clerk", "Tailwind CSS"],
+        "tags": [
+          "Next.js",
+          "React",
+          "Convex",
+          "Clerk",
+          "Tailwind CSS"
+        ],
         "logo": "/skylab/default.svg",
         "link": "https://skylabfitness.net/"
       },
       {
         "title": "Ruma",
-        "status": "Beta",
+        "status": "Shipped",
         "meta": "In-House Product",
-        "description": "Ruma is our own in-house product built for serious property investors. Users can model rental yields and capital growth, create and compare multiple scenarios side by side, and get fees auto-calculated. It replaces guesswork with clarity, giving investors the data they need to act with confidence. Launching soon in Malaysia.",
-        "tags": ["React", "Convex", "Clerk", "Tailwind CSS"],
+        "description": "Ruma is our own in-house product built for serious property investors. Users can model rental yields and capital growth, create and compare multiple scenarios side by side, and get fees auto-calculated. It replaces guesswork with clarity, giving investors the data they need to act with confidence. Now live in Malaysia.",
+        "tags": [
+          "React",
+          "Convex",
+          "Clerk",
+          "Tailwind CSS"
+        ],
         "logo": "/ruma/default.svg",
         "link": "https://ruma.casa/"
       },
@@ -61,44 +126,73 @@
         "status": "Shipped",
         "meta": "Hackathon Project",
         "description": "Built end-to-end during a competitive hackathon, Reflect teaches users to identify and avoid scams. It features an AI chatbot for real-time scam advice, a minigame that generates unique phishing scenarios for users to classify, and a community forum for sharing experiences. All powered by the Gemini API inside Google AI Studio.",
-        "tags": ["Google AI Studio", "Gemini API", "AI Chatbot"],
+        "tags": [
+          "Google AI Studio",
+          "Gemini API",
+          "AI Chatbot"
+        ],
         "link": "https://www.kaggle.com/competitions/gemini-3/writeups/new-writeup-1765521995287#3372722"
       },
       {
-        "title": "Orbit",
+        "title": "Rinko",
         "status": "WIP",
         "meta": "In-House Product",
-        "description": "Orbit is our in-house booking platform for any business that lives and dies by its calendar. Clients book and pay online, businesses manage customers and run promotions, and everything stays in one place — no more spreadsheets. Currently in active development.",
-        "tags": ["React", "Convex", "BetterAuth"],
-        "link": "https://orbitstudios.app/"
+        "description": "Rinko (formerly Orbit) is our booking platform for local businesses that run sessions people book: fitness and yoga studios, coaches and tutors, barbers and salons. It grew out of the Skylab Fitness app we shipped, turned into a product any of them can sign up for.\n\nEach business gets its own branded booking site and an admin dashboard for scheduling, payments, passes, and credits, in English, Khmer, or Chinese. Currently in active development.",
+        "tags": [
+          "React Router",
+          "Convex",
+          "Cloudflare Workers",
+          "Stripe"
+        ],
+        "logo": "/rinko/default.svg",
+        "link": "https://rinko.app/"
       }
     ],
     "personal": [
       {
         "title": "Portfolio",
         "meta": "Personal Site",
-        "description": "Built a responsive personal portfolio website with a terminal-inspired design and smooth user experience.\n\n• Dark/light mode toggle with custom CSS variables\n• Terminal-style interface with typing animations\n• Modal-based project showcase with mobile optimization\n• Responsive design from mobile-first to desktop",
-        "tags": ["React", "TypeScript", "CSS", "Personal"],
+        "description": "This site. A redesign that tells my story as a ride through Phnom Penh: hand-painted Khmer shop-sign lettering, riso-print textures, and a tuk-tuk that drives along as you scroll.\n\n• Statically prerendered React Router v7, hosted on Cloudflare Pages\n• Bilingual Khmer / English headings\n• Day / night themes with no flash on load\n• Projects as a night market you can browse",
+        "tags": [
+          "React Router",
+          "TypeScript",
+          "CSS",
+          "SVG"
+        ],
         "github": "https://github.com/peoul/portfolio_ver_2"
       },
       {
         "title": "Slow Typer",
         "meta": "Side Project",
         "description": "Built a minimalist typing speed test with real-time WPM tracking and visual feedback.\n\n• Performance analytics dashboard\n• Responsive design for distraction-free practice\n• Real-time accuracy measurement",
-        "tags": ["React", "TypeScript", "CSS", "Personal"],
+        "tags": [
+          "React",
+          "TypeScript",
+          "CSS",
+          "Personal"
+        ],
         "github": "https://github.com/peoul/slow-typer"
       },
       {
         "title": "Clue-Less",
         "meta": "School Project",
         "description": "Implemented a multiplayer web version of the classic Clue board game with real-time gameplay.\n\n• Lobby system with character selection\n• Turn-based mechanics and game state sync\n• Real-time multiplayer functionality\n\nTeam project for Foundations of Software at Johns Hopkins University.\nCollaborated with Amanda Lowery (PM), Linda Nguyen (Lead Dev), and Deon Odom (QA).",
-        "tags": ["Python", "Flask", "JavaScript", "School"],
+        "tags": [
+          "Python",
+          "Flask",
+          "JavaScript",
+          "School"
+        ],
         "github": "https://github.com/lamlinda/Clue-less"
       }
     ]
   },
   "contact": {
-    "headline": "Building something? Let's talk.",
+    "headline": "Let's build what's next.",
+    "paragraphs": [
+      "Cambodia's tech scene is young, fast, and just getting started. From the US, I'm building toward it: products that start here and hold up anywhere.",
+      "If you're building something, in Phnom Penh or anywhere else, let's talk."
+    ],
     "email": "lyhongpeou.lp@gmail.com",
     "linkedin": "https://www.linkedin.com/in/lyhong-peou/",
     "github": "https://github.com/peoul"

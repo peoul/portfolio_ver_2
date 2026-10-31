@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Kantumruy+Pro:wght@400;500;600;700&family=Koulen&family=Moul&display=swap');
 
 /*
- * Visual direction: TE × Doodle.
- * Structure is Swiss (this file + component CSS). Marks are hand-drawn
- * (Doodle.tsx). Never both, never neither.
+ * Visual direction: Phnom Penh streets.
+ * Riso-printed poster ink on newsprint by day, a lit-up night market by
+ * night. Two Khmer faces carry the story: Moul (the traditional shop-sign
+ * letter) and Koulen (the modern poster letter) — old and new, side by side.
  */
 
 *,
@@ -15,134 +16,181 @@
 }
 
 :root {
-  --font-sans: 'Inter', 'Helvetica Neue', system-ui, -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --font-display: 'Bricolage Grotesque', 'Arial Black', system-ui, sans-serif;
+  --font-body: 'Kantumruy Pro', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-sign: 'Moul', 'Kantumruy Pro', serif;
+  --font-poster: 'Koulen', 'Bricolage Grotesque', Impact, sans-serif;
 
-  /* 8px baseline grid — every spacing value is a multiple of 8 */
-  --s1: 0.5rem;   /*  8px */
-  --s2: 1rem;     /* 16px */
-  --s3: 1.5rem;   /* 24px */
-  --s4: 2rem;     /* 32px */
-  --s5: 3rem;     /* 48px */
-  --s6: 4rem;     /* 64px */
-  --s7: 6rem;     /* 96px */
+  --s1: 0.5rem;
+  --s2: 1rem;
+  --s3: 1.5rem;
+  --s4: 2rem;
+  --s5: 3rem;
+  --s6: 4rem;
+  --s7: 6rem;
 
-  --radius: 2px; /* max, per spec — perfect rectangles otherwise */
-  --hair: 1px;
+  --max: 1180px;
+  --gutter: clamp(16px, 4vw, 48px);
+  --radius: 10px;
+  --ride-h: 60px;
+  --topbar-h: 72px;
 
-  /* Dark is the default, so the prerendered first paint (which has no
-     data-theme attribute yet) already matches — no theme flash on load.
-     Base #1A1A1A / #F5F5F3 with three grays between. */
-  color-scheme: dark;
-  --bg: #1a1a1a;
-  --panel: #202020;
-  --ink: #f5f5f3;
-  --ink-2: #b7b7b3;
-  --ink-3: #7d7d7a;
-  --line: #2e2e2c;
-  --line-2: #3d3d3a;
-  --accent: #ff5500;
-  --accent-ink: #1a1a1a;
+  /* Riso inks — fixed across themes, like the drums in a print shop. */
+  --red: #e0262f;
+  --blue: #2340b8;
+  --yellow: #ffc61a;
+  --pink: #ff4fa3;
+  --teal: #00a38c;
+  --cream: #f4ead6;
+  --night: #15132b;
+
+  /* Day = newsprint. */
+  color-scheme: light;
+  --paper: #f4ead6;
+  --paper-2: #ebdec2;
+  --ink: #1e1b38;
+  --ink-2: #48435f;
+  --ink-3: #6f6987;
+  --soft: rgba(30, 27, 56, 0.14);
+  --grain: 0.22;
 }
 
-/* Light = paper. */
-[data-theme="light"] {
-  color-scheme: light;
-  --bg: #f5f5f3;
-  --panel: #fbfbfa;
-  --ink: #1a1a1a;
-  --ink-2: #4a4a48;
-  --ink-3: #8a8a87;
-  --line: #e2e2df;
-  --line-2: #cfcfca;
-  --accent: #ff5500;
-  --accent-ink: #f5f5f3;
+/* Night = the market's lit up. */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #15132b;
+  --paper-2: #211e40;
+  --ink: #f4ead6;
+  --ink-2: #cfc6dc;
+  --ink-3: #9a92b2;
+  --soft: rgba(244, 234, 214, 0.16);
+  --grain: 0.12;
+}
+
+/* No-JS fallback: follow the OS. (With JS, the inline script in root.tsx
+   always stamps data-theme before first paint.) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --paper: #15132b;
+    --paper-2: #211e40;
+    --ink: #f4ead6;
+    --ink-2: #cfc6dc;
+    --ink-3: #9a92b2;
+    --soft: rgba(244, 234, 214, 0.16);
+    --grain: 0.12;
+  }
 }
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  font-family: var(--font-sans);
-  font-size: 0.9375rem; /* 15px */
-  line-height: 1.55;
-  letter-spacing: -0.006em;
-  background-color: var(--bg);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
   color: var(--ink);
-  font-feature-settings: 'cv11', 'ss01';
+  background: var(--paper);
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+  padding-bottom: var(--ride-h);
+  transition: background-color 0.4s ease, color 0.4s ease;
+  overflow-x: hidden;
 }
 
-/* ---- shared rigid primitives ------------------------------------------- */
-
-/* 10–11px uppercase label, muted gray, tracked out */
-.label {
-  font-family: var(--font-sans);
-  font-size: 0.6875rem; /* 11px */
-  font-weight: 500;
-  line-height: 1;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--ink-3);
+/* Paper grain over everything — the riso texture. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  opacity: var(--grain);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .12 0 0 0 0 .1 0 0 0 0 .2 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* tabular monospace index numbers (01, 02 …) */
-.idx {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  font-weight: 500;
-  font-feature-settings: 'tnum' 1;
-  color: var(--accent);
-  letter-spacing: 0.02em;
-}
-
-/* 1px hairline divider — never thicker, never dashed */
-.hair {
-  border: 0;
-  border-top: var(--hair) solid var(--line);
-}
-
-/* Rendered, but out of view — used to keep content in the markup for
-   crawlers when the visible UI only reveals it on interaction. */
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-  border: 0;
+img,
+svg {
+  display: block;
+  max-width: 100%;
 }
 
 a {
   color: inherit;
 }
 
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 3px solid var(--pink);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 ::selection {
-  background: var(--accent);
-  color: var(--accent-ink);
+  background: var(--yellow);
+  color: #1e1b38;
 }
 
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+/* Khmer runs need more vertical room for stacked subscripts and vowels. */
+[lang="km"] {
+  line-height: 1.7;
 }
 
-.cursor {
-  display: inline-block;
-  width: 0.5em;
-  height: 1em;
-  vertical-align: text-bottom;
-  background-color: var(--accent);
-  margin-left: 0.25em;
-  animation: blink 1.1s steps(1) infinite;
+.kh-sign {
+  font-family: var(--font-sign);
+  font-weight: 400;
+}
+
+.kh-poster {
+  font-family: var(--font-poster);
+  font-weight: 400;
+}
+
+/* Small tracked caps — the stencil on a market crate. */
+.label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/* Misregistered riso overprint: the pink drum landed a hair off. */
+.riso {
+  text-shadow: 0.05em 0.04em 0 var(--pink);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .cursor { animation: none; }
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
